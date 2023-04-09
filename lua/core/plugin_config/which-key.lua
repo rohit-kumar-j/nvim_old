@@ -43,8 +43,7 @@ local mappings = {
 	G     = {
 		-- Symbol : Git
 		name = "Git",
-		-- g = { "<cmd>FloatermNew lazygit<cr>", "Lazygit" },
-		g = { "<cmd>Lazygit<cr>", "Lazygit" },
+		g = { "<cmd>LazyGit<cr>", "Lazygit" },
 		j = { "<cmd>lua require ('gitsigns').next_hunk({navigation_message = false})<cr>", "Next Hunk" },
 		k = { "<cmd>lua require ('gitsigns').prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
 		l = { "<cmd>lua require ('gitsigns').blame_line()<cr>", "Blame" },
