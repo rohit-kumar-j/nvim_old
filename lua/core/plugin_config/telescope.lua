@@ -22,7 +22,7 @@ require('telescope').setup {
     set_env = {['COLORTERM'] = 'truecolor'}, -- default = nil,
     }
 }
-  
+
 extensions = {
   ["ui-select"] = {
     require("telescope.themes").get_dropdown {

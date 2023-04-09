@@ -4,12 +4,12 @@
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
-vim.api.nvim_set_keymap('n' , '<C-h>' , '<C-w>h' , {noremap = true, silent = false} )
-vim.api.nvim_set_keymap('n' , '<C-j>' , '<C-w>j' , {noremap = true, silent = false} )
-vim.api.nvim_set_keymap('n' , '<C-l>' , '<C-w>l' , {noremap = true, silent = false} )
-vim.api.nvim_set_keymap('n' , '<C-k>' , '<C-w>k' , {noremap = true, silent = false} )
-vim.api.nvim_set_keymap('i' , 'jk' , '<Esc>' , {noremap = true, silent = false} )
-vim.api.nvim_set_keymap('i' , 'kj' , '<Esc>' , {noremap = true, silent = false} )
+vim.api.nvim_set_keymap('n', '<C-h>', '<C-w>h', { noremap = true, silent = false })
+vim.api.nvim_set_keymap('n', '<C-j>', '<C-w>j', { noremap = true, silent = false })
+vim.api.nvim_set_keymap('n', '<C-l>', '<C-w>l', { noremap = true, silent = false })
+vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = false })
+vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = false })
+vim.api.nvim_set_keymap('i', 'kj', '<Esc>', { noremap = true, silent = false })
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
@@ -60,9 +60,10 @@ vim.o.termguicolors = true
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-  group = highlight_group,
-  pattern = '*',
+	callback = function()
+		vim.highlight.on_yank()
+	end,
+	group = highlight_group,
+	pattern = '*',
 })
+
