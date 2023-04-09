@@ -1,6 +1,6 @@
 # Nvim Config
 
 Todo:
-- [] DAP
-- [] Git Signs
+- [ ] DAP
+- [ ] Git Signs
  

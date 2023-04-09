@@ -50,23 +50,6 @@ require('lazy').setup({
 			'voldikss/vim-floaterm',
 		}
 	},
-	-- { -- LSP
-	--   {'neovim/nvim-lspconfig'},
-	--   {'williamboman/mason-lspconfig.nvim'},
-	--   {'williamboman/mason.nvim'},
-	--   {'WhoIsSethDaniel/mason-tool-installer.nvim'},
-	--   {'mfussenegger/nvim-dap'},
-	--   {'jay-babu/mason-nvim-dap.nvim'},
-	--   -- Autocompletiondev
-	--   {'hrsh7th/cmp-nvim-lsp'},
-	--   {'hrsh7th/cmp-buffer'},
-	--   {'hrsh7th/cmp-path'},
-	--   {'hrsh7th/cmp-cmdline'},
-	--   {'hrsh7th/nvim-cmp'},
-	--   -- Snippets
-	--   {'L3MON4D3/LuaSnip'},
-	--   {'saadparwaiz1/cmp_luasnip'},
-	-- },
 	{ 'folke/which-key.nvim' },
 	{ 'nvim-lualine/lualine.nvim' },
 	{ 'lukas-reineke/indent-blankline.nvim' },
