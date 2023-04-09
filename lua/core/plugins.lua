@@ -45,7 +45,9 @@ require('lazy').setup({
 		version = '*',
 		dependencies = {
 			'nvim-lua/plenary.nvim',
-			'nvim-telescope/telescope-ui-select.nvim'
+			'nvim-telescope/telescope-ui-select.nvim',
+			'kdheepak/lazygit.nvim',
+			'voldikss/vim-floaterm',
 		}
 	},
 	-- { -- LSP

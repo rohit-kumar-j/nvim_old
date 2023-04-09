@@ -7,7 +7,7 @@ local mappings = {
 	e     = { "<cmd>NvimTreeFindFileToggle<CR>", "Explorer File Toggle" }, -- DONE
 	E     = { "<cmd>e $MYVIMRC<CR>", "Edit VIMRC" },                      -- DONE
 	[";"] = { "<cmd>Dashboard<CR>", "Dashboard" },                        --
-	C     = {
+	c     = {
 		-- Symbol : CMake
 		name = "CMake",
 		g = { "<cmd>CMakeGenerate<cr>", "CMake Generate" },
@@ -43,7 +43,8 @@ local mappings = {
 	G     = {
 		-- Symbol : Git
 		name = "Git",
-		g = { "<cmd>lua require ('lvim.core..terminal').lazygit_toggle()<cr>", "Lazygit" },
+		-- g = { "<cmd>FloatermNew lazygit<cr>", "Lazygit" },
+		g = { "<cmd>Lazygit<cr>", "Lazygit" },
 		j = { "<cmd>lua require ('gitsigns').next_hunk({navigation_message = false})<cr>", "Next Hunk" },
 		k = { "<cmd>lua require ('gitsigns').prev_hunk({navigation_message = false})<cr>", "Prev Hunk" },
 		l = { "<cmd>lua require ('gitsigns').blame_line()<cr>", "Blame" },
