@@ -23,7 +23,7 @@ require('lazy').setup({
 			pcall(vim.cmd, 'MasonUpdate')
 		end,
 	},
-	{ 'williamboman/mason-lspconfig.nvim' },       -- For installing language servers
+	{ 'williamboman/mason-lspconfig.nvim' },        -- For installing language servers
 	{ 'WhoIsSethDaniel/mason-tool-installer.nvim' }, -- For installing dap, linters, formatters, etc.
 
 	-- Autocompletion
@@ -40,10 +40,13 @@ require('lazy').setup({
 
 	{ "nvim-treesitter/nvim-treesitter",          build = ":TSUpdate" },
 	{ "nvim-tree/nvim-tree.lua" },
-	{ 'nvim-telescope/telescope.nvim',            version = '*',                               dependencies = {
-		'nvim-lua/plenary.nvim',
-		'nvim-telescope/telescope-ui-select.nvim'
-	  } 
+	{
+		'nvim-telescope/telescope.nvim',
+		version = '*',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			'nvim-telescope/telescope-ui-select.nvim'
+		}
 	},
 	-- { -- LSP
 	--   {'neovim/nvim-lspconfig'},
@@ -67,7 +70,7 @@ require('lazy').setup({
 	{ 'lukas-reineke/indent-blankline.nvim' },
 	{ 'numToStr/Comment.nvim' },
 	{ 'ggandor/leap.nvim' },
-	{ "akinsho/bufferline.nvim",                  dependencies = "nvim-tree/nvim-web-devicons" },
+	{ "akinsho/bufferline.nvim",            dependencies = "nvim-tree/nvim-web-devicons" },
 	{ 'windwp/nvim-autopairs' },
 	{ 'lewis6991/gitsigns.nvim' },
 	{ 'projekt0n/github-nvim-theme' },
@@ -88,4 +91,3 @@ require('lazy').setup({
 		},
 	},
 })
-

@@ -41,9 +41,9 @@ vim.api.nvim_set_var("lsp_servers",
 -- Global LSP Linters
 vim.api.nvim_set_var("lsp_linters",
 	{
-		"luacheck",     -- lua
-		"flake8",       -- python
-		"cpplint",      -- C++
+		"luacheck", -- lua
+		"flake8", -- python
+		"cpplint", -- C++
 	}
 )
 
@@ -51,18 +51,18 @@ vim.api.nvim_set_var("lsp_linters",
 -- Global LSP DAP
 vim.api.nvim_set_var("lsp_dap",
 	{
-		"debugpy",      -- python
-		"codelldb",     -- C++
-		"cpptools",     -- C++
+		"debugpy", -- python
+		"codelldb", -- C++
+		"cpptools", -- C++
 	}
 )
 
 -- Global LSP Formatters
 vim.api.nvim_set_var("lsp_formatters",
 	{
-		"stylua",           -- lua
-		"black",            -- python
-		"clang-format",     -- C++, C
+		"stylua",     -- lua
+		"black",      -- python
+		"clang-format", -- C++, C
 	}
 )
 
@@ -111,4 +111,3 @@ require("core.plugin_config.dashboard")
 
 -- Call which key last
 require("core.plugin_config.which-key")
-
