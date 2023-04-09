@@ -2,5 +2,5 @@
 
 Todo:
 - [ ] DAP
-- [ ] Git Signs
+- [ ] CMake UI
  
