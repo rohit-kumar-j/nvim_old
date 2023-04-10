@@ -48,6 +48,7 @@ local mappings = {
 		g = { ":Telescope live_grep<cr>", "Live Grep" },                               -- DONE
 		b = { ":Telescope buffers<cr>", "Buffers" },                                   -- DONE
 		r = { ":Telescope resume<cr>", "Resume" },                                     -- DONE
+		c = { ":Telescope colorscheme preview=true<cr>", "Resume" },                   -- DONE
 		e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
 		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },         -- DONE
 		S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" }, -- DONE

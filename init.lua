@@ -107,10 +107,33 @@ require("core.plugin_config.comment")
 require("core.plugin_config.cmake-tools")
 require("core.plugin_config.lspconfig")
 require("core.plugin_config.nvim-cmp")
-require("core.plugin_config.themes.github_theme")
 require("core.plugin_config.dashboard")
 
 -- Call which key last
 require("core.plugin_config.which-key")
 
-vim.o.guicursor = '' --'n-v-c-sm-i-ci-ve:block,r-cr-o:hor20,a:blinkwait700-blinkoff400-blinkon250-Cursor/lCursor,blend=20'
+
+
+require("core.plugin_config.themes.github_theme")
+require("core.plugin_config.themes.catppuccin")
+require("core.plugin_config.themes.rose-pine")
+require("core.plugin_config.themes.kanagawa")
+require("core.plugin_config.themes.monokai-pro")
+-- require("core.plugin_config.themes.aylin") -- do not require this
+require("core.plugin_config.themes.kanagawa")
+require("core.plugin_config.themes.juliana")
+require("core.plugin_config.themes.nightfox")
+require("core.plugin_config.themes.onedark")
+require("core.plugin_config.themes.tundra")
+require("core.plugin_config.themes.onedark-pro")
+-- require("core.plugin_config.themes.onehalf")
+
+
+-- vim.cmd('colorscheme rose-pine')
+-- vim.cmd('colorscheme github_dark_default')
+-- vim.cmd('colorscheme catppuccin')
+-- vim.cmd('colorscheme tokyonight')
+-- vim.cmd('colorscheme kanagawa')
+-- vim.cmd('colorscheme aylin')
+-- vim.cmd('colorscheme monokai-pro')
+-- vim.cmd('colorscheme onehalfdark')

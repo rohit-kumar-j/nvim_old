@@ -20,6 +20,23 @@ require('telescope').setup {
 		color_devicons = true,
 		use_less = true,
 		set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+	},
+	pickers = {
+		planets = {
+			show_pluto = true,
+			show_moon = true,
+			show_earth = true,
+			show_mars = true,
+			show_jupiter = true,
+			show_neptune = true,
+			show_saturn = true,
+			show_uranus = true,
+			show_venus = true,
+			show_mercury = true,
+		},
+		colorscheme = {
+			enable_preview = true,
+		},
 	}
 }
 
