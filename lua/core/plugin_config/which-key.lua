@@ -1,12 +1,24 @@
+function toggle_nvimtree()
+	if vim.fn.bufname():match 'NvimTree_' then
+		vim.cmd.wincmd 'p'
+	else
+		vim.cmd('NvimTreeFindFile')
+	end
+end
+
+-- :lua require('nvim-tree.api').tree.toggle(false, true)
+
 local wk = require("which-key")
 local mappings = {
-	w     = { "<cmd>w<CR>", "Save" },                                     -- DONE
-	q     = { "<cmd>q<CR>", "Quit" },                                     -- DONE
-	Q     = { "<cmd>wq<CR>", "Save & Quit" },                             -- DONE
-	x     = { "<cmd>bdelete<CR>", "Close" },                              -- DONE
-	e     = { "<cmd>NvimTreeFindFileToggle<CR>", "Explorer File Toggle" }, -- DONE
-	E     = { "<cmd>e $MYVIMRC<CR>", "Edit VIMRC" },                      -- DONE
-	[";"] = { "<cmd>Dashboard<CR>", "Dashboard" },                        --
+	w     = { "<cmd>w<CR>", "Save" },                                                              -- DONE
+	q     = { "<cmd>q<CR>", "Quit" },                                                              -- DONE
+	Q     = { "<cmd>wq<CR>", "Save & Quit" },                                                      -- DONE
+	x     = { "<cmd>bdelete<CR>", "Close" },                                                       -- DONE
+	e     = { "<cmd>:lua toggle_nvimtree()<CR>", "Explorer Toggle" },                              -- DONE
+	r     = { "<cmd>:lua require('nvim-tree.api').tree.toggle(false, true)<CR>", "Explorer Peek" }, -- DONE
+	f     = { "<cmd>:Telescope find_files<CR>", "Explorer Tree Collapse" },                        -- DONE
+	C     = { "<cmd>e $MYVIMRC<CR>", "Edit VIMRC" },                                               -- DONE
+	[";"] = { "<cmd>Dashboard<CR>", "Dashboard" },                                                 --
 	c     = {
 		-- Symbol : CMake
 		name = "CMake",
@@ -40,7 +52,7 @@ local mappings = {
 		s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },         -- DONE
 		S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" }, -- DONE
 	},
-	G     = {
+	g     = {
 		-- Symbol : Git
 		name = "Git",
 		g = { "<cmd>LazyGit<cr>", "Lazygit" },
