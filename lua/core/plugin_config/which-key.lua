@@ -141,7 +141,7 @@ local mappings = {
 		-- Symbol : Buffers
 		name = "Buffers",
 		j = { "<cmd>BufferLinePick<cr>", "Jump" },
-		f = { "<cmd>Telescope buffers previewer=true<cr>", "Find" },
+		f = { "<cmd>Telescope buffers<cr>", "Open buffers" },
 		b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
 		n = { "<cmd>BufferLineCycleNext<cr>", "Next" },
 		W = { "<cmd>noautocmd w<cr>", "Save without formatting (noautocmd)" },
