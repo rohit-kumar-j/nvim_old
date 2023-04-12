@@ -60,7 +60,7 @@ require('lazy').setup({
 	{ 'lewis6991/gitsigns.nvim' },
 
 	--- Themes
-	{ 'projekt0n/github-nvim-theme' },
+	{ 'projekt0n/github-nvim-theme',        lazy = false },
 	{ 'rose-pine/neovim',                   name = 'rose-pine' },
 	{ 'rebelot/kanagawa.nvim',              name = 'kanagawa' },
 	{ 'catppuccin/nvim',                    name = 'catppuccin' },
