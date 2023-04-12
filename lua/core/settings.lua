@@ -27,7 +27,7 @@ vim.o.mouse = 'a'
 vim.o.tabstop = 4
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
-vim.o.expandtab = false
+vim.o.expandtab = true
 vim.o.smartindent = false
 vim.o.autoindent = false
 
@@ -61,9 +61,9 @@ vim.o.termguicolors = true
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = '*',
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
 })

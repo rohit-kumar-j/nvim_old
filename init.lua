@@ -5,82 +5,83 @@ vim.api.nvim_set_var('copy_to_single_clipboard', false) -- Copy with y . Only te
 -------------------------------------------------
 -- Global LSP Servers
 vim.api.nvim_set_var('lsp_servers',
-	{
-		{
-			name = 'lua_ls',
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { 'vim' }
-					},
-				},
-			},
-		},
-		{
-			name     = 'cmake',
-			settings = {
-				CMake = {
-					filetypes = { 'cmake', 'CMakeLists.txt' }
-				},
-			},
-		},
-		{
-			name = 'clangd',
-			settings = {
-				clangd = {
-					--      excludeArgs = { '-stdlib=libc++' }
-				},
-			},
-		},
-		{
-			name = 'pyright',
-		},
-		{
-			name = 'jsonls', -- for json formatting
-		}
-	}
+  {
+    {
+      name = 'lua_ls',
+      settings = {
+        Lua = {
+          diagnostics = {
+            globals = { 'vim' }
+          },
+        },
+      },
+    },
+    {
+      name     = 'cmake',
+      settings = {
+        CMake = {
+          filetypes = { 'cmake', 'CMakeLists.txt' }
+        },
+      },
+    },
+    {
+      name = 'clangd',
+      settings = {
+        clangd = {
+          --      excludeArgs = { '-stdlib=libc++' }
+        },
+      },
+    },
+    {
+      name = 'pyright',
+    },
+    {
+      name = 'jsonls', -- for json formatting
+    },
+  }
 )
 
 -- Global LSP Linters
 vim.api.nvim_set_var('lsp_linters',
-	{
-		'luacheck', -- lua
-		'flake8', -- python
-		'cpplint', -- C++
-		'jsonlint', -- json
-	}
+  {
+    'luacheck', -- lua
+    'flake8',   -- python
+    'cpplint',  -- C++
+    'jsonlint', -- json
+  }
 )
 
 
 -- Global LSP DAP
 vim.api.nvim_set_var('lsp_dap',
-	{
-		'debugpy', -- python
-		'codelldb', -- C++
-		'cpptools', -- C++
-		-- No dap for json
-	}
+  {
+    'debugpy',  -- python
+    'codelldb', -- C++
+    'cpptools', -- C++
+    -- No dap for json
+  }
 )
 
 -- Global LSP Formatters
 vim.api.nvim_set_var('lsp_formatters',
-	{
-		'stylua',     -- lua
-		'black',      -- python
-		'clang-format', -- C++, C
-		'fixjson',    --json
-	}
+  {
+    'stylua',       -- lua
+    'black',        -- python
+    'clang-format', -- C++, C
+    'fixjson',      --json
+  }
 )
 
 -------------------------------------------------
 -- Global Treesitter Servers
 vim.api.nvim_set_var('treesitter_servers',
-	{
-		'lua',
-		'c',
-		'cpp',
-		'cmake',
-	}
+  {
+    'lua',
+    'c',
+    'cpp',
+    'cmake',
+    'vim', -- This solves syntax highlighting in {.lua} files
+  }
 )
 
 -------------------------------------------------
@@ -117,32 +118,33 @@ require('core.plugin_config.dashboard')
 
 -- Call which key last
 require('core.plugin_config.which-key')
+require('core.plugin_config.markid')
 
 
 
 require('core.plugin_config.themes.github_theme')
 require('core.plugin_config.themes.catppuccin')
 require('core.plugin_config.themes.rose-pine')
-require('core.plugin_config.themes.kanagawa')
-require('core.plugin_config.themes.monokai-pro')
+-- require('core.plugin_config.themes.kanagawa')
+-- require('core.plugin_config.themes.monokai-pro')
 -- require('core.plugin_config.themes.aylin') -- do not require this
-require('core.plugin_config.themes.kanagawa')
-require('core.plugin_config.themes.juliana')
-require('core.plugin_config.themes.nightfox')
-require('core.plugin_config.themes.onedark')
-require('core.plugin_config.themes.tundra')
-require('core.plugin_config.themes.onedark-pro')
+-- require('core.plugin_config.themes.kanagawa')
+-- require('core.plugin_config.themes.juliana')
+-- require('core.plugin_config.themes.nightfox')
+-- require('core.plugin_config.themes.onedark')
+-- require('core.plugin_config.themes.tundra')
+-- require('core.plugin_config.themes.onedark-pro')
 -- require('core.plugin_config.themes.onehalf')
 
 
--- vim.cmd('colorscheme rose-pine')
-vim.cmd('colorscheme github_dark_default')
--- vim.cmd('colorscheme catppuccin')
--- vim.cmd('colorscheme tokyonight')
--- vim.cmd('colorscheme kanagawa')
--- vim.cmd('colorscheme aylin')
--- vim.cmd('colorscheme monokai-pro')
--- vim.cmd('colorscheme onehalfdark')
+-- vim.cmd.colorscheme('rose-pine')
+vim.cmd.colorscheme('github_dark_default')
+-- vim.cmd.colorscheme('catppuccin')
+-- vim.cmd.colorscheme('tokyonight')
+-- vim.cmd.colorscheme('kanagawa')
+-- vim.cmd.colorscheme('aylin')
+-- vim.cmd.colorscheme('monokai-pro')
+-- vim.cmd.colorscheme('onehalfdark')
 --
 
 
