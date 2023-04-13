@@ -1,4 +1,4 @@
 require('tokyonight').setup({
-	style = "storm",
-	light_style = 'night',
+    style = "storm",
+    light_style = 'night',
 })

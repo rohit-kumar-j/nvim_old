@@ -7,11 +7,11 @@ vim.opt.termguicolors = true
 
 -- empty setup using defaults
 require("nvim-tree").setup(
-	{
-		view = {
-			side = 'left',
-			width = 35,
-			-- auto_resize = true,
-		}
-	}
+    {
+        view = {
+            side = 'left',
+            width = 35,
+            -- auto_resize = true,
+        }
+    }
 )
