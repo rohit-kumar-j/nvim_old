@@ -2,5 +2,5 @@
 
 Todo:
 - [ ] DAP
-- [ ] CMake UI
+- [x] CMake UI
  

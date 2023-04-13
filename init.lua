@@ -5,83 +5,83 @@ vim.api.nvim_set_var('copy_to_single_clipboard', false) -- Copy with y . Only te
 -------------------------------------------------
 -- Global LSP Servers
 vim.api.nvim_set_var('lsp_servers',
-  {
     {
-      name = 'lua_ls',
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = { 'vim' }
-          },
+        {
+            name = 'lua_ls',
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { 'vim' }
+                    },
+                },
+            },
         },
-      },
-    },
-    {
-      name     = 'cmake',
-      settings = {
-        CMake = {
-          filetypes = { 'cmake', 'CMakeLists.txt', 'CMakeCache.txt' },
+        {
+            name     = 'cmake',
+            settings = {
+                CMake = {
+                    filetypes = { 'cmake', 'CMakeLists.txt', 'CMakeCache.txt' },
+                },
+            },
         },
-      },
-    },
-    {
-      name = 'clangd',
-      settings = {
-        clangd = {
-          --      excludeArgs = { '-stdlib=libc++' }
+        {
+            name = 'clangd',
+            settings = {
+                clangd = {
+                    --      excludeArgs = { '-stdlib=libc++' }
+                },
+            },
         },
-      },
-    },
-    {
-      name = 'pyright',
-    },
-    {
-      name = 'jsonls', -- for json formatting
-    },
-  }
+        {
+            name = 'pyright',
+        },
+        {
+            name = 'jsonls', -- for json formatting
+        },
+    }
 )
 
 -- Global LSP Linters
 vim.api.nvim_set_var('lsp_linters',
-  {
-    'luacheck', -- lua
-    'flake8',   -- python
-    'cpplint',  -- C++
-    'jsonlint', -- json
-  }
+    {
+        'luacheck', -- lua
+        'flake8',   -- python
+        'cpplint',  -- C++
+        'jsonlint', -- json
+    }
 )
 
 
 -- Global LSP DAP
 vim.api.nvim_set_var('lsp_dap',
-  {
-    'debugpy',  -- python
-    'codelldb', -- C++
-    'cpptools', -- C++
-    -- No dap for json
-  }
+    {
+        'debugpy',  -- python
+        'codelldb', -- C++
+        'cpptools', -- C++
+        -- No dap for json
+    }
 )
 
 -- Global LSP Formatters
 vim.api.nvim_set_var('lsp_formatters',
-  {
-    'stylua',       -- lua
-    'black',        -- python
-    'clang-format', -- C++, C
-    'fixjson',      --json
-  }
+    {
+        'stylua',       -- lua
+        'black',        -- python
+        'clang-format', -- C++, C
+        'fixjson',      --json
+    }
 )
 
 -------------------------------------------------
 -- Global Treesitter Servers
 vim.api.nvim_set_var('treesitter_servers',
-  {
-    'lua',
-    'c',
-    'cpp',
-    'cmake',
-    'vim', -- This solves syntax highlighting in {.lua} files
-  }
+    {
+        'lua',
+        'c',
+        'cpp',
+        'cmake',
+        'vim', -- This solves syntax highlighting in {.lua} files
+    }
 )
 
 -------------------------------------------------
@@ -115,6 +115,7 @@ require('core.plugin_config.cmake-tools')
 require('core.plugin_config.lspconfig')
 require('core.plugin_config.nvim-cmp')
 require('core.plugin_config.dashboard')
+require('core.plugin_config.todo-comments')
 
 -- Call which key last
 require('core.plugin_config.which-key')
