@@ -11,6 +11,10 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = false
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('i', 'kj', '<Esc>', { noremap = true, silent = false })
 
+vim.api.nvim_set_keymap('n', '<S-Up>', '<cmd>resize +2<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-Down>', '<cmd>resize -2<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-S-Left>', '<cmd>vertical resize +2<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<C-S-Right>', '<cmd>vertical resize -2<CR>', { silent = true })
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
