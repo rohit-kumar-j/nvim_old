@@ -20,7 +20,7 @@ vim.api.nvim_set_var('lsp_servers',
       name     = 'cmake',
       settings = {
         CMake = {
-          filetypes = { 'cmake', 'CMakeLists.txt' }
+          filetypes = { 'cmake', 'CMakeLists.txt', 'CMakeCache.txt' },
         },
       },
     },

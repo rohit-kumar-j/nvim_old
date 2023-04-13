@@ -90,7 +90,6 @@ require('lazy').setup({
   { 'glepnir/dashboard-nvim',              lazy = false },
   {
     'rohit-kumar-j/cmake-tools.nvim',
-    branch = 'dev',
     deendencies = {
       'nvim-tree/nvim-web-devicons',
       'nvim-lua/plenary.nvim',
