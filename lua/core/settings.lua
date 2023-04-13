@@ -16,6 +16,8 @@ vim.api.nvim_set_keymap('i', 'kj', '<Esc>', { noremap = true, silent = false })
 
 -- Set highlight on search
 vim.o.hlsearch = false
+vim.o.splitright = true
+vim.o.splitbelow = true
 
 -- Make line numbers default
 vim.wo.number = true
