@@ -49,7 +49,11 @@ require('lazy').setup({
             'voldikss/vim-floaterm',
         }
     },
-    { 'folke/which-key.nvim',                lazy = false },
+    {
+        'folke/which-key.nvim',
+        tag = 'v1.2.2',
+        lazy = false
+    },
     { 'nvim-lualine/lualine.nvim',           lazy = false },
     { 'lukas-reineke/indent-blankline.nvim', lazy = false },
     { 'numToStr/Comment.nvim',               lazy = false },
