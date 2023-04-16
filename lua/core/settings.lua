@@ -1,6 +1,8 @@
 -- Set <space> as the leader key
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
+--
+local vim = vim
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
@@ -54,6 +56,30 @@ vim.wo.signcolumn = 'yes'
 vim.o.updatetime = 250
 vim.o.timeout = true
 vim.o.timeoutlen = 300
+
+
+-- Toggle folds with 'zc' in normal mode
+function toggle_fold()
+    local foldlevel = vim.fn.foldlevel('.')
+    if foldlevel == 0 then
+        vim.cmd('normal! zc')
+    else
+        vim.cmd('normal! za')
+    end
+end
+
+vim.api.nvim_create_autocmd({ "BufEnter" }, {
+    pattern = { "*" },
+    command = "normal zx",
+})
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.foldnestmax = 10
+vim.opt.foldlevel = 99
+
+vim.api.nvim_set_keymap('n', 'zc', ':lua toggle_fold()<CR>', { noremap = true, silent = true })
+
+
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
