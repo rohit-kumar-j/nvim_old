@@ -2,7 +2,8 @@ function toggle_nvimtree()
     if vim.fn.bufname():match 'NvimTree_' then
         vim.cmd.wincmd 'p'
     else
-        vim.cmd('NvimTreeFindFile')
+        vim.cmd('NvimTreeFindFile') -- Find currently open file and set Focus
+        vim.cmd('NvimTreeFocus')    -- Focus on the Opened tree
     end
 end
 

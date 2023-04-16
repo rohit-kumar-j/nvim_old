@@ -1,6 +1,6 @@
 # Nvim Config
 
-Todo:
-- [ ] DAP
-- [x] CMake UI
- 
+To-do:
+
+-   [ ] DAP
+-   [x] CMake UI
