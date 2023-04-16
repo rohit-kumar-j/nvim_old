@@ -1,5 +1,5 @@
 -- Install package manager
---    https://github.com/folke/lazy.nvim
+--    https://github.com/folke/lazy.nvimplug
 --    `:help lazy.nvim.txt` for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
@@ -60,28 +60,38 @@ require('lazy').setup({
     { 'David-Kunz/markid',                   lazy = false }, -- highlight same-name identifiers with the same colors
 
     --- Themes
-    { 'projekt0n/github-nvim-theme',         lazy = false },
-    { 'rose-pine/neovim',                    name = 'rose-pine',                           lazy = false },
-    { 'rebelot/kanagawa.nvim',               name = 'kanagawa',                            lazy = false },
-    { 'catppuccin/nvim',                     name = 'catppuccin',                          lazy = false },
-    { 'folke/tokyonight.nvim',               lazy = false },
-    { 'loctvl842/monokai-pro.nvim',          lazy = false },
-    { 'AhmedAbdulrahman/vim-aylin',          lazy = false }, --         name = 'vim-aylin' ,lazy=false},
-    { 'mcchrish/zenbones.nvim',              dependencies = 'rktjmp/lush.nvim',            lazy = false },
-    { 'uloco/bluloco.nvim',                  dependencies = 'rktjmp/lush.nvim',            lazy = false },
-    { 'tanvirtin/monokai.nvim',              lazy = false },
-    { 'kaiuri/nvim-juliana',                 lazy = false },
-    { 'EdenEast/nightfox.nvim',              lazy = false },
-    { 'shaunsingh/nord.nvim',                lazy = false },
-    { 'navarasu/onedark.nvim',               lazy = false },
-    { 'nyoom-engineering/oxocarbon.nvim',    lazy = false },
-    { 'tiagovla/tokyodark.nvim',             lazy = false },
-    { 'olimorris/onedarkpro.nvim',           lazy = false },
-    { 'sam4llis/nvim-tundra',                lazy = false },
-    { 'bluz71/vim-moonfly-colors',           lazy = false },
+    {
+        'projekt0n/github-nvim-theme',
+        tag = 'v0.0.7',
+        lazy = false,
+        -- opts = {},
+        -- opts = {
+        --     experiments = {
+        --         new_palettes = false
+        --     },
+        -- },
+    },
+    { 'rose-pine/neovim',                 name = 'rose-pine',                lazy = false },
+    { 'rebelot/kanagawa.nvim',            name = 'kanagawa',                 lazy = false },
+    { 'catppuccin/nvim',                  name = 'catppuccin',               lazy = false },
+    { 'folke/tokyonight.nvim',            lazy = false },
+    { 'loctvl842/monokai-pro.nvim',       lazy = false },
+    { 'AhmedAbdulrahman/vim-aylin',       lazy = false }, --         name = 'vim-aylin' ,lazy=false},
+    { 'mcchrish/zenbones.nvim',           dependencies = 'rktjmp/lush.nvim', lazy = false },
+    { 'uloco/bluloco.nvim',               dependencies = 'rktjmp/lush.nvim', lazy = false },
+    { 'tanvirtin/monokai.nvim',           lazy = false },
+    { 'kaiuri/nvim-juliana',              lazy = false },
+    { 'EdenEast/nightfox.nvim',           lazy = false },
+    { 'shaunsingh/nord.nvim',             lazy = false },
+    { 'navarasu/onedark.nvim',            lazy = false },
+    { 'nyoom-engineering/oxocarbon.nvim', lazy = false },
+    { 'tiagovla/tokyodark.nvim',          lazy = false },
+    { 'olimorris/onedarkpro.nvim',        lazy = false },
+    { 'sam4llis/nvim-tundra',             lazy = false },
+    { 'bluz71/vim-moonfly-colors',        lazy = false },
 
     --
-    { 'folke/twilight.nvim',                 lazy = false },
+    { 'folke/twilight.nvim',              lazy = false },
     {
         'folke/todo-comments.nvim',
         lazy = false,
@@ -95,7 +105,14 @@ require('lazy').setup({
     --     build = function() vim.fn["mkdp#util#install"]() end,
     --     lazy = false
     -- },
-    { 'ellisonleao/glow.nvim',               lazy = false },
+    {
+        'ellisonleao/glow.nvim',
+        lazy = false,
+        cmd = "Glow",
+        opts = {
+            glow_path = "C:\\Users\\Rohit\\scoop\\shims\\glow.exe",
+        },
+    },
     { 'mcauley-penney/tidy.nvim',            lazy = false },
     { 'terrortylor/nvim-comment',            lazy = false },
     { 'lukas-reineke/indent-blankline.nvim', lazy = false },
@@ -111,5 +128,30 @@ require('lazy').setup({
             'mfussenegger/nvim-dap',
         },
         lazy = false
+    },
+
+    -- Organization with `.norg` files
+    {
+        "nvim-neorg/neorg",
+        build = ":Neorg sync-parsers",
+        opts = {
+            load = {
+                ["core.defaults"] = {}, -- Loads default behaviour
+                ["core.norg.concealer"] = {
+                    config = {
+                        folds = true,
+                        icon_preset = 'varied', -- basic, diamond, varied
+                    },
+                },                              -- Adds pretty icons to your documents
+                -- ["core.norg.dirman"] = {      -- Manages Neorg workspaces
+                --     config = {
+                --         workspaces = {
+                --             notes = "~/notes",
+                --         },
+                --     },
+                -- },
+            },
+        },
+        dependencies = { { "nvim-lua/plenary.nvim" } },
     },
 })

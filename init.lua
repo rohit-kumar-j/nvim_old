@@ -91,6 +91,7 @@ vim.api.nvim_set_var('treesitter_servers',
         'c',
         'cpp',
         'cmake',
+        'norg',
         'vim', -- This solves syntax highlighting in {.lua} files
     }
 )
@@ -103,8 +104,8 @@ vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]] -- Auto format on sav
 -- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'             -- Code Folding
 
 require('core.os_config')
-require('core.settings')
 require('core.plugins')
+require('core.settings')
 
 require('core.plugin_config.nvim-tree')
 require('core.plugin_config.nvim-treesitter')
@@ -129,6 +130,7 @@ require('core.plugin_config.dashboard')
 require('core.plugin_config.glow')
 require('core.plugin_config.tidy')
 require('core.plugin_config.todo-comments')
+require('core.plugin_config.neorg')
 
 -- Call which key last
 require('core.plugin_config.which-key')
@@ -152,9 +154,9 @@ require('core.plugin_config.themes.rose-pine')
 
 
 -- vim.cmd.colorscheme('rose-pine')
--- vim.cmd.colorscheme('github_dark_default')
+vim.cmd.colorscheme('github_dark_default')
 -- vim.cmd.colorscheme('nord')
-vim.cmd.colorscheme('carbonfox')
+-- vim.cmd.colorscheme('carbonfox')
 -- vim.cmd.colorscheme('catppuccin')
 -- vim.cmd.colorscheme('tokyonight')
 -- vim.cmd.colorscheme('kanagawa')
