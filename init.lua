@@ -38,6 +38,12 @@ vim.api.nvim_set_var('lsp_servers',
         {
             name = 'jsonls', -- for json formatting
         },
+        {
+            name = 'ltex', -- for markdown lsp
+        },
+        {
+            name = 'esbonio', -- for reStructuredText lsp
+        }
     }
 )
 
@@ -48,6 +54,7 @@ vim.api.nvim_set_var('lsp_linters',
         'flake8',   -- python
         'cpplint',  -- C++
         'jsonlint', -- json
+        'textlint', -- markdown
     }
 )
 
@@ -59,6 +66,8 @@ vim.api.nvim_set_var('lsp_dap',
         'codelldb', -- C++
         'cpptools', -- C++
         -- No dap for json
+        -- No dap for markdown
+        -- No dap for reStructuredText
     }
 )
 
@@ -69,6 +78,8 @@ vim.api.nvim_set_var('lsp_formatters',
         'black',        -- python
         'clang-format', -- C++, C
         'fixjson',      --json
+        'prettierd',    -- markdown
+        -- No formatter for reStructuredText
     }
 )
 
@@ -115,6 +126,8 @@ require('core.plugin_config.cmake-tools')
 require('core.plugin_config.lspconfig')
 require('core.plugin_config.nvim-cmp')
 require('core.plugin_config.dashboard')
+require('core.plugin_config.glow')
+require('core.plugin_config.tidy')
 require('core.plugin_config.todo-comments')
 
 -- Call which key last
@@ -139,14 +152,16 @@ require('core.plugin_config.themes.rose-pine')
 
 
 -- vim.cmd.colorscheme('rose-pine')
-vim.cmd.colorscheme('github_dark_default')
+-- vim.cmd.colorscheme('github_dark_default')
+-- vim.cmd.colorscheme('nord')
+vim.cmd.colorscheme('carbonfox')
 -- vim.cmd.colorscheme('catppuccin')
 -- vim.cmd.colorscheme('tokyonight')
 -- vim.cmd.colorscheme('kanagawa')
 -- vim.cmd.colorscheme('aylin')
 -- vim.cmd.colorscheme('monokai-pro')
 -- vim.cmd.colorscheme('onehalfdark')
---
+-- vim.cmd.colorscheme('moonfly')
 
 
 

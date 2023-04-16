@@ -57,7 +57,7 @@ require('lazy').setup({
     { "akinsho/bufferline.nvim",             dependencies = "nvim-tree/nvim-web-devicons", lazy = false },
     { 'windwp/nvim-autopairs',               lazy = false },
     { 'lewis6991/gitsigns.nvim',             lazy = false },
-    { 'David-Kunz/markid',                   lazy = false },
+    { 'David-Kunz/markid',                   lazy = false }, -- highlight same-name identifiers with the same colors
 
     --- Themes
     { 'projekt0n/github-nvim-theme',         lazy = false },
@@ -89,6 +89,14 @@ require('lazy').setup({
         'nvim-lua/plenary.nvim'
     },
     { 'folke/zen-mode.nvim',                 lazy = false },
+    -- {
+    --     'iamcco/markdown-preview.nvim',
+    --     ft = "markdown",
+    --     build = function() vim.fn["mkdp#util#install"]() end,
+    --     lazy = false
+    -- },
+    { 'ellisonleao/glow.nvim',               lazy = false },
+    { 'mcauley-penney/tidy.nvim',            lazy = false },
     { 'terrortylor/nvim-comment',            lazy = false },
     { 'lukas-reineke/indent-blankline.nvim', lazy = false },
     { 'akinsho/toggleterm.nvim',             lazy = false },

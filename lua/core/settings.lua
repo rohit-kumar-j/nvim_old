@@ -61,7 +61,9 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
-
+vim.g.mkdp_auto_start = 1
+vim.g.mkdp_browser = 'brave' -- markdown preview
+vim.g.mkdp_theme = 'light'   -- markdown preview
 
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
@@ -73,3 +75,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     group = highlight_group,
     pattern = '*',
 })
+
+-- [[ Edit markdown tables on save with pandoc ]]
+-- Define the is_markdown function
+function is_markdown()
+    local extension = vim.fn.expand('%:e')
+    return extension == 'md' or extension == 'markdown'
+end
+
+-- Define the BufWritePost autocommand
+vim.cmd([[
+  augroup pandoc
+    autocmd!
+    autocmd BufWritePost *.md if luaeval("is_markdown()") | silent execute '!pandoc % --lua-filter=html_details -t markdown-simple_tables -o %' | edit | endif
+  augroup END
+]])
