@@ -1,3 +1,4 @@
+local vim = vim
 local lsp_servers = vim.api.nvim_get_var('lsp_servers')
 
 -- Convert lsp_servers to a table of strings
@@ -39,7 +40,7 @@ require('mason-tool-installer').setup(
 )
 -- LINTERS | FORMATTERS | DAP
 
-
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 -- LSP SETUP
 local on_attach = function(client, bufnr)
     -- Using default Keymaps
@@ -49,5 +50,26 @@ for _, lsp in ipairs(lsp_servers) do
     require('lspconfig')[lsp.name].setup {
         settings = lsp_servers[lsp.settings],
         on_attach = on_attach,
+        capabilities = capabilities
     }
 end
+
+-- vim.lsp.handlers['textDocument/hover'] = function(_, method, result)
+--     vim.lsp.util.focusable_float(method, function()
+--         if not (result and result.contents) then
+--             -- return { 'No information available' }
+--             return
+--         end
+--         local markdown_lines = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+--         markdown_lines = vim.lsp.util.trim_empty_lines(markdown_lines)
+--         if vim.tbl_isempty(markdown_lines) then
+--             -- return { 'No information available' }
+--             return
+--         end
+--         local bufnr, winnr = vim.lsp.util.fancy_floating_markdown(markdown_lines, {
+--             pad_left = 1, pad_right = 1,
+--         })
+--         vim.lsp.util.close_preview_autocmd({ "CursorMoved", "BufHidden" }, winnr)
+--         return bufnr, winnr
+--     end)
+-- end
