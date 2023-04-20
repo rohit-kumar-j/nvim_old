@@ -29,6 +29,7 @@ local mappings = {
         d = { "<cmd>CMakeDebug<cr>", "CMake Debug" },
         O = { "<cmd>CMakeOpen<cr>", "CMake Open Console" },
         C = { "<cmd>CMakeClose<cr>", "CMake Close Console" },
+        l = { "<cmd>CMakeSelectLaunchTarget<cr>", "Launch Target" },
         i = { "<cmd>CMakeInstall<cr>", "CMake Install" },
         c = { "<cmd>CMakeClean<cr>", "CMake Clean" },
         s = { "<cmd>CMakeStop<cr>", "CMake Stop" },
@@ -45,12 +46,13 @@ local mappings = {
     t     = {
         -- Symbol : Telescope
         name = "Telescope",
-        f = { ":Telescope find_files<cr>", "Find Files" },                               -- DONE
-        g = { ":Telescope live_grep<cr>", "Live Grep" },                                 -- DONE
-        b = { ":Telescope buffers<cr>", "Buffers" },                                     -- DONE
-        r = { ":Telescope resume<cr>", "Resume" },                                       -- DONE
-        t = { ":TodoTelescope<cr>", "TODO List" },                                       -- DONE
-        p = { ":Telescope colorscheme preview=true<cr>", "Color Scheme Preview" },       -- DONE
+        f = { "<cmd>Telescope find_files<cr>", "Find Files" },                           -- DONE
+        g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },                             -- DONE
+        b = { "<cmd>Telescope buffers<cr>", "Buffers" },                                 -- DONE
+        r = { "<cmd>Telescope resume<cr>", "Resume" },                                   -- DONE
+        t = { "<cmd>TodoTelescope<cr>", "TODO List" },                                   -- DONE
+        h = { "<cmd>Telescope help_tags<cr>", "Help tags" },                             -- DONE
+        p = { "<cmd>Telescope colorscheme preview=true<cr>", "Color Scheme Preview" },   -- DONE
         e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },           -- DONE
         S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" }, -- DONE
