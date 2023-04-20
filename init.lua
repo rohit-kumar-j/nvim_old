@@ -5,95 +5,125 @@ vim.api.nvim_set_var('copy_to_single_clipboard', false) -- Copy with y . Only te
 -------------------------------------------------
 -- Global LSP Servers
 vim.api.nvim_set_var('lsp_servers',
-    {
-        {
-            name = 'lua_ls',
-            settings = {
-                Lua = {
-                    diagnostics = {
-                        globals = { 'vim' }
-                    },
-                },
-            },
-        },
-        {
-            name     = 'cmake',
-            settings = {
-                CMake = {
-                    filetypes = { 'cmake', 'CMakeLists.txt', 'CMakeCache.txt' },
-                },
-            },
-        },
-        {
-            name = 'clangd',
-            settings = {
-                clangd = {
-                    --      excludeArgs = { '-stdlib=libc++' }
-                },
-            },
-        },
-        {
-            name = 'pyright',
-        },
-        {
-            name = 'jsonls', -- for json formatting
-        },
-        {
-            name = 'ltex', -- for markdown lsp
-        },
-        {
-            name = 'esbonio', -- for reStructuredText lsp
-        }
-    }
+	{
+		{
+			name = 'lua_ls',
+			settings = {
+				Lua = {
+					diagnostics = {
+						globals = { 'vim' }
+					},
+				},
+			},
+		},
+		{
+			name     = 'cmake',
+			settings = {
+				CMake = {
+					filetypes = { 'cmake', 'CMakeLists.txt', 'CMakeCache.txt' },
+				},
+			},
+		},
+		{
+			name = 'clangd',
+			cmd = {
+				"clangd",
+				-- "--background-index",
+				-- "-ID:\\VS2022\\Koala\\external",
+				--     "--clang-tidy",
+				--     "--header-insertion=iwyu",
+				--     "--completion-style=detailed",
+				--     "--function-arg-placeholders",
+				--     "--suggest-missing-includes",
+				-- "--query-driver='C:\\Program Files\\LLVM\\bin\\clangd.exe'"
+			},
+			root_dir = function(fname)
+				return lspconfig.util.find_git_ancestor(fname)
+			end,
+			-- init_options = {
+			--     usePlaceholders = true,
+			--     completeUnimported = true,
+			--     clangdFileStatus = true
+			-- includePaths = { "D:\\VS2022\\Koala\\external" },
+			-- },
+			settings = {
+				clangd = {
+					extraArgs = {
+						-- "-ID:\\VS2022\\Koala\\external",
+					}
+					--      excludeArgs = { '-stdlib=libc++' }
+				},
+			},
+		},
+		{
+			name = 'pyright',
+		},
+		{
+			name = 'jsonls', -- for json formatting
+		},
+		{
+			name = 'ltex', -- for markdown lsp
+		},
+		{
+			name = 'esbonio', -- for reStructuredText lsp
+		},
+		{
+			name = 'lemminx', -- for xml
+		}
+	}
 )
 
 -- Global LSP Linters
 vim.api.nvim_set_var('lsp_linters',
-    {
-        'luacheck', -- lua
-        'flake8',   -- python
-        'cpplint',  -- C++
-        'jsonlint', -- json
-        'textlint', -- markdown
-    }
+	{
+		'luacheck', -- lua
+		'flake8', -- python
+		'cpplint', -- C++
+		'jsonlint', -- json
+		'textlint', -- markdown
+		-- No linters for xml
+	}
 )
 
 
 -- Global LSP DAP
 vim.api.nvim_set_var('lsp_dap',
-    {
-        'debugpy',  -- python
-        'codelldb', -- C++
-        'cpptools', -- C++
-        -- No dap for json
-        -- No dap for markdown
-        -- No dap for reStructuredText
-    }
+	{
+		'debugpy', -- python
+		'codelldb', -- C++
+		'cpptools', -- C++
+		-- No dap for json
+		-- No dap for markdown
+		-- No dap for reStructuredText
+		-- No dap for xml
+	}
 )
 
 -- Global LSP Formatters
 vim.api.nvim_set_var('lsp_formatters',
-    {
-        'stylua',       -- lua
-        'black',        -- python
-        'clang-format', -- C++, C
-        'fixjson',      --json
-        'prettierd',    -- markdown
-        -- No formatter for reStructuredText
-    }
+	{
+		'stylua', -- lua
+		'black',  -- python
+		'clang-format', -- C++, C
+		'fixjson', --json
+		'prettierd', -- markdown
+		-- No formatter for reStructuredText
+		'xmlformatter' -- xml
+	}
 )
 
 -------------------------------------------------
 -- Global Treesitter Servers
 vim.api.nvim_set_var('treesitter_servers',
-    {
-        'lua',
-        'c',
-        'cpp',
-        'cmake',
-        'norg',
-        'vim', -- This solves syntax highlighting in {.lua} files
-    }
+	{
+		'lua',
+		'c',
+		'cpp',
+		'cmake',
+		'norg',
+		-- No treesitter server for xml
+		'vim', -- This solves syntax highlighting in {.lua} files
+	}
 )
 
 -------------------------------------------------
@@ -104,6 +134,8 @@ vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]] -- Auto format on sav
 -- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'             -- Code Folding
 
 require('core.os_config')
+
+-- Install plugins
 require('core.plugins')
 require('core.settings')
 
@@ -154,10 +186,10 @@ require('core.plugin_config.themes.rose-pine')
 
 
 -- vim.cmd.colorscheme('rose-pine')
-vim.cmd.colorscheme('github_dark_default')
+-- vim.cmd.colorscheme('github_dark_default')
 -- vim.cmd.colorscheme('nord')
 -- vim.cmd.colorscheme('carbonfox')
--- vim.cmd.colorscheme('catppuccin')
+vim.cmd.colorscheme('catppuccin-mocha')
 -- vim.cmd.colorscheme('tokyonight')
 -- vim.cmd.colorscheme('kanagawa')
 -- vim.cmd.colorscheme('aylin')
