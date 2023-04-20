@@ -1,9 +1,15 @@
-local lspkind = require('lspkind')
-lspkind.init()
+local vim                     = vim
+local lspkind                 = require('lspkind')
 
-local cmp = require('cmp')
-local types = require("cmp.types")
-local str = require("cmp.utils.str")
+local cmp                     = require('cmp')
+local types                   = require("cmp.types")
+local str                     = require("cmp.utils.str")
+
+local snip_status_ok, luasnip = pcall(require, "luasnip")
+if not snip_status_ok then
+    return
+end
+
 
 cmp.setup({
     completion = { border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, scrollbar = "║" },
@@ -12,13 +18,20 @@ cmp.setup({
         -- documentation = {
         border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
         scrollbar = "║",
+        completion = cmp.config.window.bordered()
     },
     mapping = cmp.mapping.preset.insert {
         ['<C-b>'] = cmp.mapping.scroll_docs(-4),
         ['<C-f>'] = cmp.mapping.scroll_docs(4),
         ['<C-o>'] = cmp.mapping.complete(),
         ['<C-e>'] = cmp.mapping.abort(),
-        ['<CR>'] = cmp.mapping.confirm({ select = true }),
+        ["<CR>"] = cmp.mapping(
+            cmp.mapping.confirm {
+                behavior = cmp.ConfirmBehavior.Insert,
+                select = true,
+            },
+            { "i", "c" }
+        ),
         ["<C-j>"] = cmp.mapping(
             cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
             { "i", "s", "c" }
@@ -27,34 +40,43 @@ cmp.setup({
             cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
             { "i", "s", "c" }
         ),
-        ['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
-        ['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
-        -- ["<Tab>"] = function(fallback)
-        --     if cmp.visible() then
-        --         cmp.select_next_item()
-        --     else
-        --         fallback()
-        --     end
-        -- end,
-        -- ["<S-Tab>"] = function(fallback)
-        --     if cmp.visible() then
-        --         cmp.select_prev_item()
-        --     else
-        --         fallback()
-        --     end
-        -- end,
-        -- ["<M>"] = cmp.mapping(function(fallback)
-        --     -- This little snippet will confirm with tab, and if no entry is selected, will confirm the first item
-        --     if cmp.visible() then
-        --         local entry = cmp.get_selected_entry()
-        --         if not entry then
-        --             cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-        --         end
-        --         cmp.confirm()
-        --     else
-        --         fallback()
-        --     end
-        -- end, {"i","s","c"}),
+        ["<c-space>"] = cmp.mapping(
+            cmp.mapping.confirm {
+                behavior = cmp.ConfirmBehavior.Replace,
+                select = false,
+            },
+            { "i", "c" }
+        ),
+
+        -- Super Tabs!! If there are args of functions, then we can jump between them to insert args!
+        ["<C-N>"] = cmp.mapping(function(fallback) -- ["<Tab>"]
+            if cmp.visible() then
+                cmp.select_next_item()
+            elseif luasnip.expandable() then
+                luasnip.expand()
+            elseif luasnip.expand_or_jumpable() then
+                luasnip.expand_or_jump()
+            elseif check_backspace() then
+                fallback()
+            else
+                fallback()
+            end
+        end, {
+            "i",
+            "s",
+        }),
+        ["<C-P>"] = cmp.mapping(function(fallback) -- ["<S-Tab>"]
+            if cmp.visible() then
+                cmp.select_prev_item()
+            elseif luasnip.jumpable(-1) then
+                luasnip.jump(-1)
+            else
+                fallback()
+            end
+        end, {
+            "i",
+            "s",
+        }),
         ["<C-l>"] = cmp.mapping(function(fallback)
             if luasnip.expand_or_jumpable() then
                 vim.fn.feedkeys(t("<Plug>luasnip-expand-or-jump"), "")
@@ -80,10 +102,10 @@ cmp.setup({
     },
     sources = cmp.config.sources {
         { name = 'nvim_lsp' },
-        { name = 'nvim_lua' },
         { name = 'lua_snip' },
         { name = 'friendly-snippets' },
-        { name = 'buffer',           keyword_length = 4 }, -- max_item_count = 5 }
+        { name = 'nvim_lua' },
+        { name = 'buffer',           keyword_length = 3 }, -- max_item_count = 5 }
     },
     snippet = {
         expand = function(args)
@@ -127,23 +149,20 @@ cmp.setup({
     },]]
     experimental = {
         ghost_text = true,
+        native_menu = false,
     },
+    formatting = {
+        format = lspkind.cmp_format {
+            -- with_text = true,
+            -- mode      = 'symbol', -- show only symbol annotations
+            maxwidth = 50,         -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+            ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+            -- The function below will be called before any actual modifications from lspkind
+            -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
+            -- before = function (entry, vim_item)
+            --   ...
+            --   return vim_item
+            -- end
+        }
+    }
 })
-
--- LSPKIND SUGGESTED CONFIG
--- cmp.setup {
---   formatting = {
---     format = lspkind.cmp_format({
---       mode = 'symbol', -- show only symbol annotations
---       maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
---       ellipsis_char = '...', -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
---
---       -- The function below will be called before any actual modifications from lspkind
---       -- so that you can provide more controls on popup customization. (See [#30](https://github.com/onsails/lspkind-nvim/pull/30))
---       before = function (entry, vim_item)
---         ...
---         return vim_item
---       end
---     })
---   }
--- }
