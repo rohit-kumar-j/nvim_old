@@ -10,11 +10,14 @@ require("nvim-treesitter.configs").setup(
             enable = true,
             custom_captures = {
                 -- Highlight the @foo.bar capture group with the "Identifier" highlight group.
-                ["foo.bar"] = "Identifier",
+                -- ["foo.bar"] = "Identifier",
             },
             additional_vim_regex_highlighting = false,
         },
         indent = {
+            enable = true,
+        },
+        autotag = {
             enable = true,
         }
     }
