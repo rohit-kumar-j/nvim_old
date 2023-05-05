@@ -5,125 +5,125 @@ vim.api.nvim_set_var('copy_to_single_clipboard', false) -- Copy with y . Only te
 -------------------------------------------------
 -- Global LSP Servers
 vim.api.nvim_set_var('lsp_servers',
-	{
-		{
-			name = 'lua_ls',
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { 'vim' }
-					},
-				},
-			},
-		},
-		{
-			name     = 'cmake',
-			settings = {
-				CMake = {
-					filetypes = { 'cmake', 'CMakeLists.txt', 'CMakeCache.txt' },
-				},
-			},
-		},
-		{
-			name = 'clangd',
-			cmd = {
-				"clangd",
-				-- "--background-index",
-				-- "-ID:\\VS2022\\Koala\\external",
-				--     "--clang-tidy",
-				--     "--header-insertion=iwyu",
-				--     "--completion-style=detailed",
-				--     "--function-arg-placeholders",
-				--     "--suggest-missing-includes",
-				-- "--query-driver='C:\\Program Files\\LLVM\\bin\\clangd.exe'"
-			},
-			root_dir = function(fname)
-				return lspconfig.util.find_git_ancestor(fname)
-			end,
-			-- init_options = {
-			--     usePlaceholders = true,
-			--     completeUnimported = true,
-			--     clangdFileStatus = true
-			-- includePaths = { "D:\\VS2022\\Koala\\external" },
-			-- },
-			settings = {
-				clangd = {
-					extraArgs = {
-						-- "-ID:\\VS2022\\Koala\\external",
-					}
-					--      excludeArgs = { '-stdlib=libc++' }
-				},
-			},
-		},
-		{
-			name = 'pyright',
-		},
-		{
-			name = 'jsonls', -- for json formatting
-		},
-		{
-			name = 'ltex', -- for markdown lsp
-		},
-		{
-			name = 'esbonio', -- for reStructuredText lsp
-		},
-		{
-			name = 'lemminx', -- for xml
-		}
-	}
+    {
+        {
+            name = 'lua_ls',
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = { 'vim' }
+                    },
+                },
+            },
+        },
+        {
+            name     = 'cmake',
+            settings = {
+                CMake = {
+                    filetypes = { 'cmake', 'CMakeLists.txt', 'CMakeCache.txt' },
+                },
+            },
+        },
+        {
+            name = 'clangd',
+            cmd = {
+                "clangd",
+                -- "--background-index",
+                -- "-ID:\\VS2022\\Koala\\external",
+                --     "--clang-tidy",
+                --     "--header-insertion=iwyu",
+                --     "--completion-style=detailed",
+                --     "--function-arg-placeholders",
+                --     "--suggest-missing-includes",
+                -- "--query-driver='C:\\Program Files\\LLVM\\bin\\clangd.exe'"
+            },
+            root_dir = function(fname)
+                return lspconfig.util.find_git_ancestor(fname)
+            end,
+            -- init_options = {
+            --     usePlaceholders = true,
+            --     completeUnimported = true,
+            --     clangdFileStatus = true
+            -- includePaths = { "D:\\VS2022\\Koala\\external" },
+            -- },
+            settings = {
+                clangd = {
+                    extraArgs = {
+                        -- "-ID:\\VS2022\\Koala\\external",
+                    }
+                    --      excludeArgs = { '-stdlib=libc++' }
+                },
+            },
+        },
+        {
+            name = 'pyright',
+        },
+        {
+            name = 'jsonls', -- for json formatting
+        },
+        {
+            name = 'ltex', -- for markdown lsp
+        },
+        {
+            name = 'esbonio', -- for reStructuredText lsp
+        },
+        {
+            name = 'lemminx', -- for xml
+        }
+    }
 )
 
 -- Global LSP Linters
 vim.api.nvim_set_var('lsp_linters',
-	{
-		'luacheck', -- lua
-		'flake8', -- python
-		'cpplint', -- C++
-		'jsonlint', -- json
-		'textlint', -- markdown
-		-- No linters for xml
-	}
+    {
+        'luacheck', -- lua
+        'flake8',   -- python
+        'cpplint',  -- C++
+        'jsonlint', -- json
+        'textlint', -- markdown
+        -- No linters for xml
+    }
 )
 
 
 -- Global LSP DAP
 vim.api.nvim_set_var('lsp_dap',
-	{
-		'debugpy', -- python
-		'codelldb', -- C++
-		'cpptools', -- C++
-		-- No dap for json
-		-- No dap for markdown
-		-- No dap for reStructuredText
-		-- No dap for xml
-	}
+    {
+        'debugpy',  -- python
+        'codelldb', -- C++
+        'cpptools', -- C++
+        -- No dap for json
+        -- No dap for markdown
+        -- No dap for reStructuredText
+        -- No dap for xml
+    }
 )
 
 -- Global LSP Formatters
 vim.api.nvim_set_var('lsp_formatters',
-	{
-		'stylua', -- lua
-		'black',  -- python
-		'clang-format', -- C++, C
-		'fixjson', --json
-		'prettierd', -- markdown
-		-- No formatter for reStructuredText
-		'xmlformatter' -- xml
-	}
+    {
+        'stylua',       -- lua
+        'black',        -- python
+        'clang-format', -- C++, C
+        'fixjson',      --json
+        'prettierd',    -- markdown
+        -- No formatter for reStructuredText
+        'xmlformatter'  -- xml
+    }
 )
 
 -------------------------------------------------
 -- Global Treesitter Servers
 vim.api.nvim_set_var('treesitter_servers',
-	{
-		'lua',
-		'c',
-		'cpp',
-		'cmake',
-		'norg',
-		-- No treesitter server for xml
-		'vim', -- This solves syntax highlighting in {.lua} files
-	}
+    {
+        'lua',
+        'c',
+        'cpp',
+        'cmake',
+        'norg',
+        -- No treesitter server for xml
+        'vim', -- This solves syntax highlighting in {.lua} files
+    }
 )
 
 -------------------------------------------------
