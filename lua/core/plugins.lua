@@ -1,6 +1,8 @@
 -- Install package manager
 --    https://github.com/folke/lazy.nvimplug
 --    `:help lazy.nvim.txt` for more info
+
+local vim = vim
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not vim.loop.fs_stat(lazypath) then
     vim.fn.system {
@@ -118,6 +120,7 @@ require('lazy').setup({
         },
         -- { 'hood/popui.nvim',                     lazy = false },
         -- { 'chentoast/marks.nvim',                lazy = false },
+        { 'ThePrimeagen/harpoon',                lazy = false },
         { 'mcauley-penney/tidy.nvim',            lazy = false },
         { 'terrortylor/nvim-comment',            lazy = false },
         { 'lukas-reineke/indent-blankline.nvim', lazy = false },

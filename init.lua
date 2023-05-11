@@ -166,6 +166,7 @@ require('core.plugin_config.tidy')
 require('core.plugin_config.neorg')
 require('core.plugin_config.notify')
 require('core.plugin_config.todo-comments')
+require('core.plugin_config.harpoon')
 -- require('core.plugin_config.popui')
 
 -- Call which key last

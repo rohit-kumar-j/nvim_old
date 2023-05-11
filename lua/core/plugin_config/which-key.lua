@@ -1,3 +1,5 @@
+local vim = vim
+
 function toggle_nvimtree()
     if vim.fn.bufname():match 'NvimTree_' then
         vim.cmd.wincmd 'p'
@@ -19,7 +21,15 @@ local mappings = {
     r     = { "<cmd>:lua require('nvim-tree.api').tree.toggle(false, true)<CR>", "Explorer Peek" }, -- DONE
     f     = { "<cmd>:Telescope find_files<CR>", "Explorer Tree Collapse" },                         -- DONE
     C     = { "<cmd>e $MYVIMRC<CR>", "Edit VIMRC" },                                                -- DONE
-    [";"] = { "<cmd>Dashboard<CR>", "Dashboard" },                                                  --
+    [";"] = { "<cmd>Dashboard<CR>", "Dashboard" },                                                  -- DONE
+    -- h     = {
+    --     name = "Harpoon",
+    --     a = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Add file to harpoon" },
+    -- },
+    a     = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Add file to Harpoon" },
+    s     = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Toggle Harpoon Menu" },
+    n     = { "<cmd>lua require('harpoon.ui').nav_next()<CR>", "Next Harpoon mark" },
+    p     = { "<cmd>lua require('harpoon.ui').nav_prev()<CR>", "Previous Harpoon mark" },
     c     = {
         -- Symbol : CMake
         name = "CMake",
@@ -103,7 +113,7 @@ local mappings = {
         K = { "<cmd>lua vim.lsp.buf.hover()<cr>", "Hover Commands" },
         w = { "<cmd>lua vim.lsp.buf.add_workspace_folder()<cr>", "Add Workspace Folder" },
         W = { "<cmd>lua vim.lsp.buf.remove_workspace_folder()<cr>", "Remove Workspace Folder" },
-        L = { " <cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", "List Workspace Folders" },
+        L = { "<cmd>lua print(vim.inspect(vim.lsp.buf.list_workspace_folders()))<cr>", "List Workspace Folders" },
         c = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
         t = { "<cmd>lua vim.lsp.buf.type_definition()<cr>", "Type Definition" },
         d = { "<cmd>lua vim.lsp.buf.definition()<cr>", "Go To Definition" },
@@ -127,8 +137,8 @@ local mappings = {
     z     = {
         -- Symbol : Zen Mode
         name = "Focus Mode",
-        z = { ":ZenMode<CR>", "Zen Mode" },
-        t = { ":Twilight<CR>", "Toggle Twilight" },
+        z = { "<cmd>ZenMode<CR>", "Zen Mode" },
+        t = { "<cmd>Twilight<CR>", "Toggle Twilight" },
     },
     P     = {
         -- Symbol : Lazy
