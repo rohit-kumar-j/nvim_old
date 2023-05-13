@@ -127,7 +127,8 @@ ins_left {
 ins_left {
     -- mode component
     function()
-        return icons.ui.Evil
+        -- return icons.ui.Evil
+        return icons.ui.Vim
     end,
     color = function()
         -- auto change color according to neovims mode
@@ -407,6 +408,13 @@ ins_right {
         removed = { fg = colors.red },
     },
     cond = conditions.hide_in_width,
+}
+
+ins_right {
+    function()
+        return ' ' .. icons.ui.Time .. os.date('%H:%M') .. ' '
+    end,
+    color = { fg = colors.violet, gui = "bold" },
 }
 
 ins_right {

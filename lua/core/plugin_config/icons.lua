@@ -69,6 +69,7 @@ return {
     ui = {
         Lock              = "",
         TinyCircle        = "",
+        Time              = "",
         Circle            = "",
         BigCircle         = "",
         BigUnfilledCircle = "",
@@ -100,6 +101,8 @@ return {
         Calendar          = "",
         Line              = "▊",
         Evil              = "",
+        Lambda            = "λ",
+        Vim               = "",
         Debug             = "",
         Run               = "",
         VirtualPrefix     = "",
