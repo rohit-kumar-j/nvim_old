@@ -12,7 +12,10 @@ vim.api.nvim_set_var('lsp_servers',
             settings = {
                 Lua = {
                     diagnostics = {
-                        globals = { 'vim' }
+                        globals = { 'vim' },
+                        neededFileStatus = {
+                            ["codestyle-check"] = "Any",
+                        },
                     },
                 },
             },
@@ -29,24 +32,10 @@ vim.api.nvim_set_var('lsp_servers',
             name = 'clangd',
             cmd = {
                 "clangd",
-                -- "--background-index",
-                -- "-ID:\\VS2022\\Koala\\external",
-                --     "--clang-tidy",
-                --     "--header-insertion=iwyu",
-                --     "--completion-style=detailed",
-                --     "--function-arg-placeholders",
-                --     "--suggest-missing-includes",
-                -- "--query-driver='C:\\Program Files\\LLVM\\bin\\clangd.exe'"
             },
             root_dir = function(fname)
                 return lspconfig.util.find_git_ancestor(fname)
             end,
-            -- init_options = {
-            --     usePlaceholders = true,
-            --     completeUnimported = true,
-            --     clangdFileStatus = true
-            -- includePaths = { "D:\\VS2022\\Koala\\external" },
-            -- },
             settings = {
                 clangd = {
                     extraArgs = {
@@ -63,7 +52,10 @@ vim.api.nvim_set_var('lsp_servers',
             name = 'jsonls', -- for json formatting
         },
         {
-            name = 'ltex', -- for markdown lsp
+            name = 'texlab', -- for latex, lsp
+        },
+        {
+            name = 'ltex', -- for latex, markdown lsp
         },
         {
             name = 'esbonio', -- for reStructuredText lsp
@@ -122,6 +114,8 @@ vim.api.nvim_set_var('treesitter_servers',
         'cpp',
         'cmake',
         'norg',
+        'latex',
+        'bibtex',
         -- No treesitter server for xml
         'vim', -- This solves syntax highlighting in {.lua} files
     }
@@ -149,7 +143,6 @@ require('core.plugin_config.leap')
 require('core.plugin_config.lazygit')
 require('core.plugin_config.gitsigns')
 require('core.plugin_config.autopairs')
-require('core.plugin_config.bufferline')
 require('core.plugin_config.nvim-comment')
 require('core.plugin_config.lualine')
 require('core.plugin_config.zen-mode')
@@ -157,7 +150,7 @@ require('core.plugin_config.indent-blankline')
 require('core.plugin_config.toggleterm')
 require('core.plugin_config.fidget')
 require('core.plugin_config.comment')
-require('core.plugin_config.cmake-tools')
+-- require('core.plugin_config.cmake-tools')
 require('core.plugin_config.lspconfig')
 require('core.plugin_config.nvim-cmp')
 require('core.plugin_config.dashboard')
@@ -167,13 +160,12 @@ require('core.plugin_config.neorg')
 require('core.plugin_config.notify')
 require('core.plugin_config.todo-comments')
 require('core.plugin_config.harpoon')
+require('core.plugin_config.nvim-ufo')
 -- require('core.plugin_config.popui')
 
 -- Call which key last
 require('core.plugin_config.which-key')
 require('core.plugin_config.markid')
-
-
 
 require('core.plugin_config.themes.github_theme')
 require('core.plugin_config.themes.catppuccin')
@@ -190,6 +182,9 @@ require('core.plugin_config.themes.rose-pine')
 -- require('core.plugin_config.themes.onehalf')
 
 
+-- call this after all themes are loaded, but not setup yet
+require('core.plugin_config.bufferline')
+
 -- vim.cmd.colorscheme('rose-pine')
 -- vim.cmd.colorscheme('github_dark_default')
 -- vim.cmd.colorscheme('nord')
@@ -201,7 +196,6 @@ vim.cmd.colorscheme('catppuccin-mocha')
 -- vim.cmd.colorscheme('monokai-pro')
 -- vim.cmd.colorscheme('onehalfdark')
 -- vim.cmd.colorscheme('moonfly')
-
 
 
 -- for token in string.gmatch(os.getenv('PATH'), '[^;]+') do

@@ -61,7 +61,7 @@ require('lazy').setup({
         { 'lukas-reineke/indent-blankline.nvim', lazy = false },
         { 'numToStr/Comment.nvim',               lazy = false },
         { 'ggandor/leap.nvim',                   lazy = false },
-        { "akinsho/bufferline.nvim",             dependencies = "nvim-tree/nvim-web-devicons", lazy = false },
+        { "akinsho/bufferline.nvim",             dependencies = "nvim-tree/nvim-web-devicons", lazy = true },
         { 'windwp/nvim-autopairs',               lazy = false },
         { 'lewis6991/gitsigns.nvim',             lazy = false },
         { 'David-Kunz/markid',                   lazy = false }, -- highlight same-name identifiers with the same colors
@@ -120,6 +120,13 @@ require('lazy').setup({
         },
         -- { 'hood/popui.nvim',                     lazy = false },
         -- { 'chentoast/marks.nvim',                lazy = false },
+        {
+            'kevinhwang91/nvim-ufo',
+            lazy         = false,
+            dependencies = {
+                'kevinhwang91/promise-async',
+            },
+        },
         { 'ThePrimeagen/harpoon',                lazy = false },
         { 'mcauley-penney/tidy.nvim',            lazy = false },
         { 'terrortylor/nvim-comment',            lazy = false },
@@ -128,7 +135,7 @@ require('lazy').setup({
         { 'j-hui/fidget.nvim',                   lazy = false },
         { 'glepnir/dashboard-nvim',              lazy = false },
         {
-            'rohit-kumar-j/cmake-tools.nvim',
+            'Civitasv/cmake-tools.nvim',
             deendencies = {
                 'nvim-tree/nvim-web-devicons',
                 'nvim-lua/plenary.nvim',

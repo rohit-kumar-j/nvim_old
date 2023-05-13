@@ -20,6 +20,9 @@ vim.api.nvim_set_keymap('n', '<C-S-Right>', '<cmd>vertical resize -2<CR>', { sil
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- terminal mode action: revert to normal mode, i,e collapse the buffer
+vim.api.nvim_set_keymap("t", "<A-x>", [[<C-\><C-n>]], { silent = true })
+
 -- Set highlight on search
 vim.o.hlsearch = false
 vim.o.splitright = true
@@ -58,7 +61,13 @@ vim.o.timeout = true
 vim.o.timeoutlen = 300
 
 
--- Toggle folds with 'zc' in normal mode
+-- This is for nvim-ufo
+vim.o.foldcolumn = '1' -- '0' is not bad
+vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+vim.o.foldlevelstart = 99
+vim.o.foldenable = true
+
+-- Default : Toggle folds with 'zc' in normal mode
 function toggle_fold()
     local foldlevel = vim.fn.foldlevel('.')
     if foldlevel == 0 then
@@ -78,8 +87,6 @@ vim.opt.foldnestmax = 10
 vim.opt.foldlevel = 99
 
 vim.api.nvim_set_keymap('n', 'zc', ':lua toggle_fold()<CR>', { noremap = true, silent = true })
-
-
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
