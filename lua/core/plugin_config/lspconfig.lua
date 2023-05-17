@@ -38,19 +38,85 @@ require('mason-tool-installer').setup(
         ensure_installed = all_lsp_tools
     }
 )
--- LINTERS | FORMATTERS | DAP
 
+-- vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
+-- vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+
+local border = {
+    -- "╭", "─", "╮", "│", "╯", "─", "╰", "│"
+    { "╭", "FloatBorder" },
+    { "─", "FloatBorder" },
+    { "╮", "FloatBorder" },
+    { "│", "FloatBorder" },
+    { "╯", "FloatBorder" },
+    { "─", "FloatBorder" },
+    { "╰", "FloatBorder" },
+    { "│", "FloatBorder" },
+}
+
+-- LSP settings (for overriding per client)
+local handlers = {
+    ["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = border }),
+    ["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = border }),
+}
+-- To instead override globally
+local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
+function vim.lsp.util.open_floating_preview(contents, syntax, opts)
+    opts = opts or {}
+    opts.border = opts.border or border
+    return orig_util_open_floating_preview(contents, syntax, opts)
+end
+
+-- Change diagnostic symbols in the sign column (gutter)
+local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
+for type, icon in pairs(signs) do
+    local hl = "DiagnosticSign" .. type
+    vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+-- See :help vim.diagnostic.config for more advanced customization options.
+vim.diagnostic.config({
+    virtual_text = true,
+    signs = true,
+    underline = true,
+    update_in_insert = true,
+    severity_sort = false,
+})
+
+-- LINTERS | FORMATTERS | DAP
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+
+capabilities.textDocument.foldingRange = {
+    dynamicRegistration = false,
+    lineFoldingOnly = true
+}
+
 -- LSP SETUP
 local on_attach = function(client, bufnr)
     -- Using default Keymaps
+    vim.api.nvim_create_autocmd("CursorHold", {
+        buffer = bufnr,
+        callback = function()
+            local opts = {
+                focusable = false,
+                close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+                border = 'rounded',
+                source = 'always',
+                prefix = ' ',
+                scope = 'cursor',
+            }
+            vim.diagnostic.open_float(nil, opts)
+        end
+    })
 end
 
 for _, lsp in ipairs(lsp_servers) do
     require('lspconfig')[lsp.name].setup {
         settings = lsp_servers[lsp.settings],
         on_attach = on_attach,
-        capabilities = capabilities
+        on_new_config = lsp_servers[lsp.on_new_config],
+        capabilities = capabilities,
+        handlers = handlers,
     }
 end
 
@@ -73,3 +139,28 @@ end
 --         return bufnr, winnr
 --     end)
 -- end
+--
+--
+-- M.icons = {
+--     Class = " ",
+--     Color = " ",
+--     Constant = " ",
+--     Constructor = " ",
+--     Enum = "了 ",
+--     EnumMember = " ",
+--     Field = " ",
+--     File = " ",
+--     Folder = " ",
+--     Function = " ",
+--     Interface = "ﰮ ",
+--     Keyword = " ",
+--     Method = "ƒ ",
+--     Module = " ",
+--     Property = " ",
+--     Snippet = "﬌ ",
+--     Struct = " ",
+--     Text = " ",
+--     Unit = " ",
+--     Value = " ",
+--     Variable = " ",
+-- }

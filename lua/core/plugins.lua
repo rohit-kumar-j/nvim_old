@@ -57,11 +57,12 @@ require('lazy').setup({
             tag = 'v1.2.2',
             lazy = false
         },
+        { 'folke/neodev.nvim',                  lazy = false },
         { 'nvim-lualine/lualine.nvim',           lazy = false },
         { 'lukas-reineke/indent-blankline.nvim', lazy = false },
         { 'numToStr/Comment.nvim',               lazy = false },
         { 'ggandor/leap.nvim',                   lazy = false },
-        { "akinsho/bufferline.nvim",             dependencies = "nvim-tree/nvim-web-devicons", lazy = true },
+        { "akinsho/bufferline.nvim",             dependencies = "nvim-tree/nvim-web-devicons", lazy = false },
         { 'windwp/nvim-autopairs',               lazy = false },
         { 'lewis6991/gitsigns.nvim',             lazy = false },
         { 'David-Kunz/markid',                   lazy = false }, -- highlight same-name identifiers with the same colors
@@ -93,7 +94,6 @@ require('lazy').setup({
         { 'nyoom-engineering/oxocarbon.nvim', lazy = false },
         { 'tiagovla/tokyodark.nvim',          lazy = false },
         { 'olimorris/onedarkpro.nvim',        lazy = false },
-        { 'sam4llis/nvim-tundra',             lazy = false },
         { 'bluz71/vim-moonfly-colors',        lazy = false },
         --
         { 'folke/twilight.nvim',              lazy = false },
@@ -122,10 +122,16 @@ require('lazy').setup({
         -- { 'chentoast/marks.nvim',                lazy = false },
         {
             'kevinhwang91/nvim-ufo',
-            lazy         = false,
+            lazy         = true,
             dependencies = {
                 'kevinhwang91/promise-async',
             },
+            -- init         = function()
+            --     vim.o.foldcolumn = '1' -- '0' is not bad
+            --     vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
+            --     vim.o.foldlevelstart = 99
+            --     vim.o.foldenable = true
+            -- end,
         },
         { 'ThePrimeagen/harpoon',                lazy = false },
         { 'mcauley-penney/tidy.nvim',            lazy = false },
@@ -135,40 +141,36 @@ require('lazy').setup({
         { 'j-hui/fidget.nvim',                   lazy = false },
         { 'glepnir/dashboard-nvim',              lazy = false },
         {
-            'Civitasv/cmake-tools.nvim',
+            'rohit-kumar-j/cmake-tools.nvim',
             deendencies = {
                 'nvim-tree/nvim-web-devicons',
                 'nvim-lua/plenary.nvim',
                 'nvim-telescope/telescope-ui-select.nvim',
                 'mfussenegger/nvim-dap',
             },
-            lazy = false
+            lazy = false,
         },
         -- Organization with `.norg` files
-        {
-            "nvim-neorg/neorg",
-            build = ":Neorg sync-parsers",
-            opts = {
-                load = {
-                    ["core.defaults"] = {}, -- Loads default behaviour
-                    ["core.concealer"] = {
-                        config = {
-                            folds = true,
-                            icon_preset = 'varied', -- basic, diamond, varied
+        -- {
+        "nvim-neorg/neorg",
+        build = ":Neorg sync-parsers",
+        opts = {
+            load = {
+                ["core.defaults"] = {},  -- Loads default behaviour
+                ["core.concealer"] = {}, -- Adds pretty icons to your documents
+                ["core.dirman"] = {      -- Manages Neorg workspaces
+                    config = {
+                        workspaces = {
+                            notes = "~/notes",
                         },
-                    },                              -- Adds pretty icons to your documents
-                    -- ["core.norg.dirman"] = {      -- Manages Neorg workspaces
-                    --     config = {
-                    --         workspaces = {
-                    --             notes = "~/notes",
-                    --         },
-                    --     },
-                    -- },
+                    },
                 },
             },
-            dependencies = { { "nvim-lua/plenary.nvim" } },
         },
+        dependencies = { { "nvim-lua/plenary.nvim" } },
     },
+
+    -- UI
     {
         ui = {
             border = "single"

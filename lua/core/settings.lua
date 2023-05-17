@@ -23,7 +23,7 @@ vim.api.nvim_set_keymap('n', '<C-S-Right>', '<cmd>vertical resize -2<CR>', { sil
 -- terminal mode action: revert to normal mode, i,e collapse the buffer
 vim.api.nvim_set_keymap("t", "<A-x>", [[<C-\><C-n>]], { silent = true })
 
--- Set highlight on search
+-- Set highlight on searc
 vim.o.hlsearch = false
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -44,6 +44,8 @@ vim.o.autoindent = true
 
 -- Enable break indent
 vim.o.breakindent = true
+vim.g.do_filetype_lua = 1
+vim.g.did_load_filetypes = 0
 
 -- Save undo history
 vim.o.undofile = true
@@ -60,33 +62,41 @@ vim.o.updatetime = 250
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
-
 -- This is for nvim-ufo
 vim.o.foldcolumn = '1' -- '0' is not bad
 vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
+vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
+-- vim.cmd([[
+-- augroup remember_folds
+--   autocmd!
+--   autocmd BufWinLeave * mkview
+--   autocmd BufWinEnter * silent! loadview
+-- augroup END
+-- ]])
+vim.api.nvim_set_keymap('n', 'zc', 'za', { noremap = true, silent = true })
 
 -- Default : Toggle folds with 'zc' in normal mode
-function toggle_fold()
-    local foldlevel = vim.fn.foldlevel('.')
-    if foldlevel == 0 then
-        vim.cmd('normal! zc')
-    else
-        vim.cmd('normal! za')
-    end
-end
+-- function toggle_fold()
+--     local foldlevel = vim.fn.foldlevel('.')
+--     if foldlevel == 0 then
+--         vim.cmd('normal! zc')
+--     else
+--         vim.cmd('normal! za')
+--     end
+-- end
+--
+-- vim.api.nvim_create_autocmd({ "BufEnter" }, {
+--     pattern = { "*" },
+--     command = "normal zx",
+-- })
+-- vim.opt.foldmethod = "expr"
+-- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- vim.opt.foldnestmax = 10
+-- vim.opt.foldlevel = 99
 
-vim.api.nvim_create_autocmd({ "BufEnter" }, {
-    pattern = { "*" },
-    command = "normal zx",
-})
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldnestmax = 10
-vim.opt.foldlevel = 99
-
-vim.api.nvim_set_keymap('n', 'zc', ':lua toggle_fold()<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', 'zc', ':lua toggle_fold()<CR>', { noremap = true, silent = true })
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
