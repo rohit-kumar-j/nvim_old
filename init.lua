@@ -6,7 +6,7 @@ vim.api.nvim_set_var('copy_to_single_clipboard', false) -- Copy with y . Only te
 -------------------------------------------------
 -- Global LSP Servers
 vim.api.nvim_set_var('lsp_servers',
-{
+    {
         {
             name = 'lua_ls',
             settings = {
@@ -16,15 +16,13 @@ vim.api.nvim_set_var('lsp_servers',
                             'vim',
                             'require'
                         },
-                        neededFileStatus = {
-                            ["codestyle-check"] = "Any",
-                        },
                     },
                     workspace = {
                         -- Make the server aware of Neovim runtime files
-                        library = vim.api.nvim_get_runtime_file("", true),
+                        library = '"${3rd}/luv/library"',
+                        checkThirdParty = false,
                     },
-                     -- Do not send telemetry data containing a randomized but unique identifier
+                    -- Do not send telemetry data containing a randomized but unique identifier
                     telemetry = {
                         enable = false,
                     },
@@ -141,9 +139,9 @@ vim.api.nvim_set_var('treesitter_servers',
 )
 
 -------------------------------------------------
--- - TODO : WhichKey Tests -> LSP:l, BUFFERS:b, DAP:d
+-- TODO: WhichKey Tests -> LSP:l, BUFFERS:b, DAP:d
 
--- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]] -- Auto format on save
+vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]] -- Auto format on save
 -- vim.opt.foldmethod = 'expr'                                 -- Code Folding
 -- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'             -- Code Folding
 
@@ -185,9 +183,6 @@ vim.cmd.colorscheme('catppuccin-mocha')
 -- vim.cmd.colorscheme('onehalfdark')
 -- vim.cmd.colorscheme('moonfly')
 
-
-
-
 require('core.plugin_config.nvim-treesitter')
 require('core.plugin_config.neodev')
 require('core.plugin_config.nvim-ufo')
@@ -221,22 +216,12 @@ require('core.plugin_config.harpoon')
 require('core.plugin_config.which-key')
 require('core.plugin_config.markid')
 
-local function checkDashboardFileType()
-    local filetype = vim.bo.filetype
-    print(filetype)
-    if filetype == "dashboard" then
-        vim.cmd.nvim_command(":IndentBlanklineDisable")
-    end
-end
-
-
 -- for token in string.gmatch(os.getenv('PATH'), '[^;]+') do
 -- 	print(token)
 -- end
 --
 --
 
-checkDashboardFileType()
 -- Dashboard -> remove the lines in dashboard
 vim.cmd([[
   augroup disableIndentlineDb
@@ -244,7 +229,6 @@ vim.cmd([[
    autocmd VimEnter * :IndentBlanklineDisable
  augroup END
 ]])
---
---
+
 -- local filetype = vim.bo.filetype
 -- print(filetype)

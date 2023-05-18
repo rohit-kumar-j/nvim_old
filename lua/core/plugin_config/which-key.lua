@@ -13,15 +13,16 @@ end
 
 local wk = require("which-key")
 local mappings = {
-    w     = { "<cmd>w<CR>", "Save" },                                                               -- DONE
-    q     = { "<cmd>q<CR>", "Quit" },                                                               -- DONE
-    Q     = { "<cmd>wq<CR>", "Save & Quit" },                                                       -- DONE
-    x     = { "<cmd>bdelete<CR>", "Close" },                                                        -- DONE
-    e     = { "<cmd>:lua toggle_nvimtree()<CR>", "Explorer Toggle" },                               -- DONE
-    r     = { "<cmd>:lua require('nvim-tree.api').tree.toggle(false, true)<CR>", "Explorer Peek" }, -- DONE
-    f     = { "<cmd>:Telescope find_files<CR>", "Explorer Tree Collapse" },                         -- DONE
-    C     = { "<cmd>e $MYVIMRC<CR>", "Edit VIMRC" },                                                -- DONE
-    [";"] = { "<cmd>Dashboard<CR>", "Dashboard" },                                                  -- DONE
+    w     = { "<cmd>w<CR>", "Save" },                                                              -- DONE
+    q     = { "<cmd>q<CR>", "Quit" },                                                              -- DONE
+    Q     = { "<cmd>wq<CR>", "Save & Quit" },                                                      -- DONE
+    x     = { "<cmd>bdelete<CR>", "Close" },                                                       -- DONE
+    e     = { "<cmd>lua toggle_nvimtree()<CR>", "Explorer Toggle" },                               -- DONE
+    r     = { "<cmd>lua require('nvim-tree.api').tree.toggle(false, true)<CR>", "Explorer Peek" }, -- DONE
+    f     = { "<cmd>Telescope find_files<CR>", "Explorer Tree Collapse" },                         -- DONE
+    C     = { "<cmd>e $MYVIMRC<CR>", "Edit VIMRC" },                                               -- DONE
+    [";"] = { "<cmd>Dashboard<CR>", "Dashboard" },                                                 -- DONE
+    W     = { "<cmd>lua require('wrapping').toggle_wrap_mode()<CR>", "Toggle Line Wrap" },         -- DONE
     -- h     = {
     --     name = "Harpoon",
     --     a = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Add file to harpoon" },

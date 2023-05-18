@@ -57,15 +57,22 @@ require('lazy').setup({
             tag = 'v1.2.2',
             lazy = false
         },
-        { 'folke/neodev.nvim',                  lazy = false },
+        { 'folke/neodev.nvim',                   lazy = false },
         { 'nvim-lualine/lualine.nvim',           lazy = false },
         { 'lukas-reineke/indent-blankline.nvim', lazy = false },
         { 'numToStr/Comment.nvim',               lazy = false },
         { 'ggandor/leap.nvim',                   lazy = false },
         { "akinsho/bufferline.nvim",             dependencies = "nvim-tree/nvim-web-devicons", lazy = false },
         { 'windwp/nvim-autopairs',               lazy = false },
-        { 'lewis6991/gitsigns.nvim',             lazy = false },
-        { 'David-Kunz/markid',                   lazy = false }, -- highlight same-name identifiers with the same colors
+        {
+            'andrewferrier/wrapping.nvim',
+            lazy = false,
+            config = function()
+                require("wrapping").setup()
+            end
+        },
+        { 'lewis6991/gitsigns.nvim', lazy = false },
+        { 'David-Kunz/markid',       lazy = false }, -- highlight same-name identifiers with the same colors
         --- Themes
         {
             'projekt0n/github-nvim-theme',
