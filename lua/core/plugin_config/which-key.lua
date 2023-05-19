@@ -16,7 +16,7 @@ local mappings = {
     w     = { "<cmd>w<CR>", "Save" },                                                              -- DONE
     q     = { "<cmd>q<CR>", "Quit" },                                                              -- DONE
     Q     = { "<cmd>wq<CR>", "Save & Quit" },                                                      -- DONE
-    x     = { "<cmd>bdelete<CR>", "Close" },                                                       -- DONE
+    x     = { "<cmd>close<CR>", "Close" },                                                         -- DONE
     e     = { "<cmd>lua toggle_nvimtree()<CR>", "Explorer Toggle" },                               -- DONE
     r     = { "<cmd>lua require('nvim-tree.api').tree.toggle(false, true)<CR>", "Explorer Peek" }, -- DONE
     f     = { "<cmd>Telescope find_files<CR>", "Telescope Find Files" },                           -- DONE
@@ -160,6 +160,7 @@ local mappings = {
         -- Symbol : Buffers
         name = "Buffers",
         j = { "<cmd>BufferLinePick<cr>", "Jump" },
+        d = { "<cmd>bdelete<cr>", "Buffer Delete" },
         f = { "<cmd>Telescope buffers<cr>", "Open buffers" },
         b = { "<cmd>BufferLineCyclePrev<cr>", "Previous" },
         n = { "<cmd>BufferLineCycleNext<cr>", "Next" },

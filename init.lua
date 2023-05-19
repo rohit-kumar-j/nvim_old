@@ -118,13 +118,13 @@ vim.api.nvim_set_var('lsp_dap',
 -- Global LSP Formatters
 vim.api.nvim_set_var('lsp_formatters',
     {
-        'stylua',          -- lua
-        'black',           -- python
-        'clang-format',    -- C++, C
-        'fixjson',         --json
-        'prettierd',       -- markdown
+        'stylua',       -- lua
+        'black',        -- python
+        'clang-format', -- C++, C
+        'fixjson',      --json
+        'prettierd',    -- markdown
         -- No formatter for reStructuredText
-        'xmlformatter'     -- xml
+        'xmlformatter'  -- xml
     }
 )
 

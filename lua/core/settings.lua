@@ -1,5 +1,4 @@
--- Set <space> as the leader key
--- See `:help mapleader`
+-- Set <space> as the leader key See `:help mapleader`
 --  NOTE: Must happen before plugins are required (otherwise wrong leader will be used)
 --
 local vim = vim
@@ -13,10 +12,17 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = false
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('i', 'kj', '<Esc>', { noremap = true, silent = false })
 
-vim.api.nvim_set_keymap('n', '<S-Up>', '<cmd>resize +2<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<S-Down>', '<cmd>resize -2<CR>', { noremap = true, silent = true })
-vim.api.nvim_set_keymap('n', '<C-S-Left>', '<cmd>vertical resize +2<CR>', { silent = true })
-vim.api.nvim_set_keymap('n', '<C-S-Right>', '<cmd>vertical resize -2<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<S-Up>', '<cmd>resize +2<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<S-Down>', '<cmd>resize -2<CR>', { noremap = true, silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-S-Left>', '<cmd>vertical resize +2<CR>', { silent = true })
+-- vim.api.nvim_set_keymap('n', '<C-S-Right>', '<cmd>vertical resize -2<CR>', { silent = true })
+-- Alternatively:
+
+vim.api.nvim_set_keymap('n', '<C-A-K>', '<cmd>resize +2<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-A-J>', '<cmd>resize -2<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-A-L>', '<cmd>vertical resize +2<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-A-H>', '<cmd>vertical resize -2<CR>', { noremap = true, silent = true })
+
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
@@ -75,28 +81,10 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 --   autocmd BufWinEnter * silent! loadview
 -- augroup END
 -- ]])
+
+-- za toggles single folds. Just using zc instead
 vim.api.nvim_set_keymap('n', 'zc', 'za', { noremap = true, silent = true })
 
--- Default : Toggle folds with 'zc' in normal mode
--- function toggle_fold()
---     local foldlevel = vim.fn.foldlevel('.')
---     if foldlevel == 0 then
---         vim.cmd('normal! zc')
---     else
---         vim.cmd('normal! za')
---     end
--- end
---
--- vim.api.nvim_create_autocmd({ "BufEnter" }, {
---     pattern = { "*" },
---     command = "normal zx",
--- })
--- vim.opt.foldmethod = "expr"
--- vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
--- vim.opt.foldnestmax = 10
--- vim.opt.foldlevel = 99
-
--- vim.api.nvim_set_keymap('n', 'zc', ':lua toggle_fold()<CR>', { noremap = true, silent = true })
 
 -- Set completeopt to have a better completion experience
 vim.o.completeopt = 'menuone,noselect'
@@ -143,7 +131,7 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
     pattern = "*",
     callback = function()
         if User.autoformat == true then
-            if vim.o.filetype == 'help' or 'nofile' or 'nowrite' or 'prompt' or 'termnal' or 'quickfix' then
+            if vim.o.filetype == 'help' then
                 return
             else
                 vim.lsp.buf.format()
