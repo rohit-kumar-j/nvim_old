@@ -102,10 +102,10 @@ db.setup({
         -- },
         shortcut = {
             {
-                desc = ' MasonInstall',
+                desc = ' Lazy Debug',
                 group = '@property',
-                action = 'PackerSync',
-                key = 'u'
+                action = 'Lazy debug',
+                key = 'd'
             },
             {
                 icon = ' ',
@@ -122,7 +122,7 @@ db.setup({
                 key = 't',
             },
             {
-                desc = ' PackerStatus',
+                desc = ' LazyStatus',
                 group = 'Number',
                 action = 'Lazy sync',
                 key = 's',
