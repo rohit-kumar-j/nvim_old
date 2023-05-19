@@ -3,7 +3,7 @@ require("indent_blankline").setup({
     char = "▏",
     context_char = "▏",
     filetype_exclude = {
-        -- ...
+        'help',
     },
     context_highlight_list = {
         -- ...
@@ -12,7 +12,7 @@ require("indent_blankline").setup({
         -- ...
     },
     space_char_blankline = " ",
-    use_treesitter = true,
+    use_treesitter = false,
     show_current_context = true,
     show_current_context_start = true,
     show_trailing_blankline_indent = false,

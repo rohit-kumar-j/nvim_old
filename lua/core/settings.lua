@@ -133,3 +133,39 @@ vim.cmd([[
     autocmd BufWritePost *.md if luaeval("is_markdown()") | silent execute '!pandoc % --lua-filter=html_details -t markdown-simple_tables -o %' | edit | endif
   augroup END
 ]])
+
+_G.User = {}
+
+User.autoformat = true
+
+vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
+    group = vim.api.nvim_create_augroup('User_Group', { clear = false }),
+    pattern = "*",
+    callback = function()
+        if User.autoformat == true then
+            if vim.o.filetype == 'help' or 'nofile' or 'nowrite' or 'prompt' or 'termnal' or 'quickfix' then
+                return
+            else
+                vim.lsp.buf.format()
+                print("Formatted buffer and saved!")
+            end
+        else
+            print("Saving file... Auto format disabled!")
+            return
+        end
+    end
+})
+
+function _G.toggleAutoformat()
+    if User.autoformat == true then
+        User.autoformat = not User.autoformat
+        print("Disabled format on save")
+    else
+        User.autoformat = not User.autoformat
+        print("Enabled format on save")
+    end
+end
+
+-- Toggle Format on save
+vim.api.nvim_set_keymap('n', '<leader>F', ':lua toggleAutoformat()<CR>',
+    { noremap = true, silent = true, desc = "Toggle Format on Save" })

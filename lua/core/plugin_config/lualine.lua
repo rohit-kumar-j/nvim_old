@@ -20,7 +20,8 @@ local conditions = {
 
 local colors = {
     normal = {
-        bg       = "#202328",
+        bg       = "#000000",
+        -- bg       = "#202328",
         fg       = "#bbc2cf",
         yellow   = "#ECBE7B",
         cyan     = "#008080",
@@ -60,7 +61,7 @@ local colors = {
     }
 }
 
-colors = colors.catppuccin_mocha;
+colors = colors.normal;
 
 local config = {
     options = {

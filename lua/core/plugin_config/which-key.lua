@@ -19,7 +19,8 @@ local mappings = {
     x     = { "<cmd>bdelete<CR>", "Close" },                                                       -- DONE
     e     = { "<cmd>lua toggle_nvimtree()<CR>", "Explorer Toggle" },                               -- DONE
     r     = { "<cmd>lua require('nvim-tree.api').tree.toggle(false, true)<CR>", "Explorer Peek" }, -- DONE
-    f     = { "<cmd>Telescope find_files<CR>", "Explorer Tree Collapse" },                         -- DONE
+    f     = { "<cmd>Telescope find_files<CR>", "Telescope Find Files" },                           -- DONE
+    -- F     = { "<cmd>lua ToggleAutoFormatting()<CR>", "Toggle Autoformatting on save" },            -- DONE
     C     = { "<cmd>e $MYVIMRC<CR>", "Edit VIMRC" },                                               -- DONE
     [";"] = { "<cmd>Dashboard<CR>", "Dashboard" },                                                 -- DONE
     W     = { "<cmd>lua require('wrapping').toggle_wrap_mode()<CR>", "Toggle Line Wrap" },         -- DONE
@@ -56,17 +57,19 @@ local mappings = {
     },
     t     = {
         -- Symbol : Telescope
-        name = "Telescope",
+        name = "Telescope/Tab ctrl",
         f = { "<cmd>Telescope find_files<cr>", "Find Files" },                           -- DONE
         g = { "<cmd>Telescope live_grep<cr>", "Live Grep" },                             -- DONE
         b = { "<cmd>Telescope buffers<cr>", "Buffers" },                                 -- DONE
         r = { "<cmd>Telescope resume<cr>", "Resume" },                                   -- DONE
         t = { "<cmd>TodoTelescope<cr>", "TODO List" },                                   -- DONE
         h = { "<cmd>Telescope help_tags<cr>", "Help tags" },                             -- DONE
-        p = { "<cmd>Telescope colorscheme preview=true<cr>", "Color Scheme Preview" },   -- DONE
+        c = { "<cmd>Telescope colorscheme preview=true<cr>", "Color Scheme Preview" },   -- DONE
         e = { "<cmd>Telescope quickfix<cr>", "Telescope Quickfix" },
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },           -- DONE
         S = { "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Workspace Symbols" }, -- DONE
+        a = { "<cmd>tabnew<cr>", "New Tab" },                                            -- DONE
+        d = { "<cmd>tabclose<cr>", "Close Tab" },                                        -- DONE
     },
     g     = {
         -- Symbol : Git

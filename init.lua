@@ -33,18 +33,24 @@ vim.api.nvim_set_var('lsp_servers',
             },
         },
         {
-            name     = 'cmake',
-            settings = {
+            name          = 'cmake',
+            settings      = {
                 CMake = {
                     filetypes = { 'cmake', 'CMakeLists.txt', 'CMakeCache.txt' },
                 },
             },
+            on_new_config = function(new_config, new_cwd)
+                local status, cmake = pcall(require, "cmake-tools")
+                if status then
+                    cmake.clangd_on_new_config(new_config)
+                end
+            end,
         },
         {
             name = 'clangd',
-            cmd = {
-                "clangd",
-            },
+            -- cmd = {
+            --     "clangd",
+            -- },
             root_dir = function(fname)
                 return lspconfig.util.find_git_ancestor(fname)
             end,
@@ -112,13 +118,13 @@ vim.api.nvim_set_var('lsp_dap',
 -- Global LSP Formatters
 vim.api.nvim_set_var('lsp_formatters',
     {
-        'stylua',       -- lua
-        'black',        -- python
-        'clang-format', -- C++, C
-        'fixjson',      --json
-        'prettierd',    -- markdown
+        'stylua',          -- lua
+        'black',           -- python
+        'clang-format',    -- C++, C
+        'fixjson',         --json
+        'prettierd',       -- markdown
         -- No formatter for reStructuredText
-        'xmlformatter'  -- xml
+        'xmlformatter'     -- xml
     }
 )
 
@@ -141,7 +147,6 @@ vim.api.nvim_set_var('treesitter_servers',
 -------------------------------------------------
 -- TODO: WhichKey Tests -> LSP:l, BUFFERS:b, DAP:d
 
-vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]] -- Auto format on save
 -- vim.opt.foldmethod = 'expr'                                 -- Code Folding
 -- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'             -- Code Folding
 
@@ -185,7 +190,6 @@ vim.cmd.colorscheme('catppuccin-mocha')
 
 require('core.plugin_config.nvim-treesitter')
 require('core.plugin_config.neodev')
-require('core.plugin_config.nvim-ufo')
 require('core.plugin_config.nvim-tree')
 require('core.plugin_config.telescope')
 require('core.plugin_config.twilight')
@@ -202,6 +206,7 @@ require('core.plugin_config.fidget')
 require('core.plugin_config.comment')
 require('core.plugin_config.cmake-tools')
 require('core.plugin_config.lspconfig')
+require('core.plugin_config.nvim-ufo')
 require('core.plugin_config.nvim-cmp')
 require('core.plugin_config.dashboard')
 require('core.plugin_config.glow')

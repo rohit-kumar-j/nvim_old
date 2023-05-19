@@ -112,9 +112,9 @@ end
 
 for _, lsp in ipairs(lsp_servers) do
     require('lspconfig')[lsp.name].setup {
-        settings = lsp_servers[lsp.settings],
+        settings = lsp.settings,
         on_attach = on_attach,
-        on_new_config = lsp_servers[lsp.on_new_config],
+        on_new_config = lsp.on_new_config,
         capabilities = capabilities,
         handlers = handlers,
     }

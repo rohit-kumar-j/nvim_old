@@ -180,7 +180,7 @@ require('lazy').setup({
     -- UI
     {
         ui = {
-            border = "single"
+            border = "rounded"
         },
         checker = { -- Check fo rupdates
             enabled = false,
