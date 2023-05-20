@@ -26,20 +26,20 @@ require('lazy').setup({
                 pcall(vim.cmd, 'MasonUpdate')
             end,
         },
-        { 'williamboman/mason-lspconfig.nvim',         lazy = false }, -- For installing language servers
-        { 'WhoIsSethDaniel/mason-tool-installer.nvim', lazy = false }, -- For installing dap, linters, formatters, etc.
+        { 'williamboman/mason-lspconfig.nvim',         lazy = true }, -- For installing language servers
+        { 'WhoIsSethDaniel/mason-tool-installer.nvim', lazy = true }, -- For installing dap, linters, formatters, etc.
         -- Autocompletion
-        { 'hrsh7th/nvim-cmp',                          tag = 'v0.0.1', lazy = false },
-        { 'hrsh7th/cmp-buffer',                        lazy = false },
-        { 'hrsh7th/cmp-path',                          lazy = false },
-        { 'hrsh7th/cmp-nvim-lua',                      lazy = false },
-        { 'hrsh7th/cmp-nvim-lsp',                      lazy = false },
-        { 'L3MON4D3/LuaSnip',                          lazy = false },
-        { 'saadparwaiz1/cmp_luasnip',                  lazy = false },
-        { 'rafamadriz/friendly-snippets',              lazy = false },
-        { 'rcarriga/nvim-notify',                      lazy = false },
-        { 'onsails/lspkind.nvim',                      lazy = false },
-        { "nvim-treesitter/nvim-treesitter",           lazy = false,   build = ":TSUpdate" },
+        { 'hrsh7th/nvim-cmp',                          tag = 'v0.0.1', lazy = true },
+        { 'hrsh7th/cmp-buffer',                        lazy = true },
+        { 'hrsh7th/cmp-path',                          lazy = true },
+        { 'hrsh7th/cmp-nvim-lua',                      lazy = true },
+        { 'hrsh7th/cmp-nvim-lsp',                      lazy = true },
+        { 'L3MON4D3/LuaSnip',                          lazy = true },
+        { 'saadparwaiz1/cmp_luasnip',                  lazy = true },
+        { 'rafamadriz/friendly-snippets',              lazy = true },
+        { 'rcarriga/nvim-notify',                      lazy = true },
+        { 'onsails/lspkind.nvim',                      lazy = true },
+        { "nvim-treesitter/nvim-treesitter",           lazy = true,    build = ":TSUpdate" },
         { "nvim-tree/nvim-tree.lua",                   lazy = false },
         {
             'nvim-telescope/telescope.nvim',
@@ -55,29 +55,29 @@ require('lazy').setup({
         {
             'folke/which-key.nvim',
             tag = 'v1.2.2',
-            lazy = false
+            lazy = true
         },
-        { 'folke/neodev.nvim',                   lazy = false },
-        { 'nvim-lualine/lualine.nvim',           lazy = false },
-        { 'lukas-reineke/indent-blankline.nvim', lazy = false },
-        { 'numToStr/Comment.nvim',               lazy = false },
-        { 'ggandor/leap.nvim',                   lazy = false },
-        { "akinsho/bufferline.nvim",             dependencies = "nvim-tree/nvim-web-devicons", lazy = false },
-        { 'windwp/nvim-autopairs',               lazy = false },
+        { 'folke/neodev.nvim',                   lazy = true },
+        { 'nvim-lualine/lualine.nvim',           lazy = true },
+        { 'lukas-reineke/indent-blankline.nvim', lazy = true },
+        { 'numToStr/Comment.nvim',               lazy = true },
+        { 'ggandor/leap.nvim',                   lazy = true },
+        { "akinsho/bufferline.nvim",             lazy = true, dependencies = "nvim-tree/nvim-web-devicons" },
+        { 'windwp/nvim-autopairs',               lazy = true },
         {
             'andrewferrier/wrapping.nvim',
-            lazy = false,
+            lazy = true,
             config = function()
                 require("wrapping").setup()
             end
         },
-        { 'lewis6991/gitsigns.nvim', lazy = false },
-        { 'David-Kunz/markid',       lazy = false }, -- highlight same-name identifiers with the same colors
+        { 'lewis6991/gitsigns.nvim', lazy = true },
+        { 'David-Kunz/markid',       lazy = true }, -- highlight same-name identifiers with the same colors
         --- Themes
         {
             'projekt0n/github-nvim-theme',
             tag = 'v0.0.7',
-            lazy = false,
+            lazy = true,
             -- opts = {},
             -- opts = {
             --     experiments = {
@@ -85,32 +85,32 @@ require('lazy').setup({
             --     },
             -- },
         },
-        { 'rose-pine/neovim',                 name = 'rose-pine',                lazy = false },
-        { 'rebelot/kanagawa.nvim',            name = 'kanagawa',                 lazy = false },
-        { 'catppuccin/nvim',                  name = 'catppuccin',               lazy = false },
-        { 'folke/tokyonight.nvim',            lazy = false },
-        { 'loctvl842/monokai-pro.nvim',       lazy = false },
-        { 'AhmedAbdulrahman/vim-aylin',       lazy = false }, --         name = 'vim-aylin' ,lazy=false},
-        { 'mcchrish/zenbones.nvim',           dependencies = 'rktjmp/lush.nvim', lazy = false },
-        { 'uloco/bluloco.nvim',               dependencies = 'rktjmp/lush.nvim', lazy = false },
-        { 'tanvirtin/monokai.nvim',           lazy = false },
-        { 'kaiuri/nvim-juliana',              lazy = false },
-        { 'EdenEast/nightfox.nvim',           lazy = false },
-        { 'shaunsingh/nord.nvim',             lazy = false },
-        { 'navarasu/onedark.nvim',            lazy = false },
-        { 'nyoom-engineering/oxocarbon.nvim', lazy = false },
-        { 'tiagovla/tokyodark.nvim',          lazy = false },
-        { 'olimorris/onedarkpro.nvim',        lazy = false },
-        { 'bluz71/vim-moonfly-colors',        lazy = false },
+        { 'rose-pine/neovim',                 lazy = true, name = 'rose-pine' },
+        { 'rebelot/kanagawa.nvim',            lazy = true, name = 'kanagawa' },
+        { 'catppuccin/nvim',                  lazy = true, name = 'catppuccin' },
+        { 'folke/tokyonight.nvim',            lazy = true },
+        { 'loctvl842/monokai-pro.nvim',       lazy = true },
+        { 'AhmedAbdulrahman/vim-aylin',       lazy = true }, --         name = 'vim-aylin' ,lazy=false},
+        { 'mcchrish/zenbones.nvim',           lazy = true, dependencies = 'rktjmp/lush.nvim' },
+        { 'uloco/bluloco.nvim',               lazy = true, dependencies = 'rktjmp/lush.nvim' },
+        { 'tanvirtin/monokai.nvim',           lazy = true },
+        { 'kaiuri/nvim-juliana',              lazy = true },
+        { 'EdenEast/nightfox.nvim',           lazy = true },
+        { 'shaunsingh/nord.nvim',             lazy = true },
+        { 'navarasu/onedark.nvim',            lazy = true },
+        { 'nyoom-engineering/oxocarbon.nvim', lazy = true },
+        { 'tiagovla/tokyodark.nvim',          lazy = true },
+        { 'olimorris/onedarkpro.nvim',        lazy = true },
+        { 'bluz71/vim-moonfly-colors',        lazy = true },
         --
-        { 'folke/twilight.nvim',              lazy = false },
+        { 'folke/twilight.nvim',              lazy = true },
         {
             'folke/todo-comments.nvim',
-            lazy = false,
+            lazy = true,
             dependencies =
             'nvim-lua/plenary.nvim'
         },
-        { 'folke/zen-mode.nvim',                 lazy = false },
+        { 'folke/zen-mode.nvim',      lazy = true },
         -- {
         --     'iamcco/markdown-preview.nvim',
         --     ft = "markdown",
@@ -129,7 +129,7 @@ require('lazy').setup({
         -- { 'chentoast/marks.nvim',                lazy = false },
         {
             'kevinhwang91/nvim-ufo',
-            lazy         = true,
+            lazy         = false,
             dependencies = {
                 'kevinhwang91/promise-async',
             },
@@ -140,41 +140,42 @@ require('lazy').setup({
             --     vim.o.foldenable = true
             -- end,
         },
-        { 'ThePrimeagen/harpoon',                lazy = false },
-        { 'mcauley-penney/tidy.nvim',            lazy = false },
-        { 'terrortylor/nvim-comment',            lazy = false },
-        { 'lukas-reineke/indent-blankline.nvim', lazy = false },
-        { 'akinsho/toggleterm.nvim',             lazy = false },
-        { 'j-hui/fidget.nvim',                   lazy = false },
-        { 'glepnir/dashboard-nvim',              lazy = false },
+        { 'ThePrimeagen/harpoon',     lazy = true },
+        { 'mcauley-penney/tidy.nvim', lazy = true },
+        { 'terrortylor/nvim-comment', lazy = true },
+        { 'akinsho/toggleterm.nvim',  lazy = true },
+        { 'j-hui/fidget.nvim',        lazy = true },
+        { 'glepnir/dashboard-nvim',   lazy = false },
         {
             'rohit-kumar-j/cmake-tools.nvim',
-            deendencies = {
+            dependencies = {
                 'nvim-tree/nvim-web-devicons',
                 'nvim-lua/plenary.nvim',
                 'nvim-telescope/telescope-ui-select.nvim',
                 'mfussenegger/nvim-dap',
             },
-            lazy = false,
+            lazy = true,
         },
         -- Organization with `.norg` files
-        -- {
-        "nvim-neorg/neorg",
-        build = ":Neorg sync-parsers",
-        opts = {
-            load = {
-                ["core.defaults"] = {},  -- Loads default behaviour
-                ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                ["core.dirman"] = {      -- Manages Neorg workspaces
-                    config = {
-                        workspaces = {
-                            notes = "~/notes",
+        {
+            "nvim-neorg/neorg",
+            build = ":Neorg sync-parsers",
+            opts = {
+                load = {
+                    ["core.defaults"] = {},  -- Loads default behaviour
+                    ["core.concealer"] = {}, -- Adds pretty icons to your documents
+                    ["core.dirman"] = {      -- Manages Neorg workspaces
+                        config = {
+                            workspaces = {
+                                notes = "~/notes",
+                            },
                         },
                     },
                 },
             },
+            dependencies = { { "nvim-lua/plenary.nvim" } },
+            lazy = true
         },
-        dependencies = { { "nvim-lua/plenary.nvim" } },
     },
 
     -- UI
@@ -183,7 +184,32 @@ require('lazy').setup({
             border = "rounded"
         },
         checker = { -- Check fo rupdates
-            enabled = false,
+            enabled = true,
+        },
+        icons = {
+            cmd = " ",
+            config = "🛠",
+            event = "",
+            ft = "📂",
+            init = "⚙",
+            import = " ",
+            keys = "🗝",
+            plugin = "🔌",
+            runtime = "💻",
+            loaded = "●",
+            not_loaded = "○",
+            source = "📄",
+            start = "🚀",
+            -- task = "📌",
+            task = "✔ ",
+            lazy = "💤 ",
+            list = {
+                "●",
+                "➜",
+                "★",
+                "‒",
+            },
         },
     }
+
 )
