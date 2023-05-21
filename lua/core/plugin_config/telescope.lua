@@ -6,7 +6,7 @@ require('telescope').setup {
         },
         prompt_prefix = " ",
         selection_caret = " ",
-        entry_prefix = "  ",
+        entry_prefix = " ",
         initial_mode = "insert",
         selection_strategy = "reset",
         sorting_strategy = "ascending",
@@ -20,6 +20,7 @@ require('telescope').setup {
         color_devicons = true,
         use_less = true,
         set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+        normal_mode = true,
     },
     pickers = {
         planets = {
@@ -36,6 +37,9 @@ require('telescope').setup {
         },
         colorscheme = {
             enable_preview = true,
+        },
+        buffers = {
+            initial_mode = "normal"
         },
     }
 }

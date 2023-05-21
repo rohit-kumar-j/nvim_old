@@ -122,7 +122,7 @@ db.setup({
                 key = 't',
             },
             {
-                desc = ' LazyStatus',
+                desc = ' Lazy Sync',
                 group = 'Number',
                 action = 'Lazy sync',
                 key = 's',

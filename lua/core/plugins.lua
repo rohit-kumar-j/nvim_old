@@ -43,7 +43,7 @@ require('lazy').setup({
         { "nvim-tree/nvim-tree.lua",                   lazy = false },
         {
             'nvim-telescope/telescope.nvim',
-            version = '*',
+            tag = '0.1.1',
             lazy = false,
             dependencies = {
                 'nvim-lua/plenary.nvim',

@@ -29,14 +29,17 @@ vim.api.nvim_set_keymap('n', '<C-A-H>', '<cmd>vertical resize -2<CR>', { noremap
 -- terminal mode action: revert to normal mode, i,e collapse the buffer
 vim.api.nvim_set_keymap("t", "<A-x>", [[<C-\><C-n>]], { silent = true })
 
--- Set highlight on searc
-vim.o.hlsearch = false
+-- Set highlight on search
+vim.o.hlsearch = true
 vim.o.splitright = true
 vim.o.splitbelow = true
 
 -- Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true
+
+-- Global status line instead of per window
+vim.o.laststatus = 3 -- :h 'laststatus'
 
 -- Enable mouse mode
 vim.o.mouse = 'a'
@@ -74,13 +77,6 @@ vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to de
 vim.o.foldlevelstart = 99
 vim.o.foldenable = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
--- vim.cmd([[
--- augroup remember_folds
---   autocmd!
---   autocmd BufWinLeave * mkview
---   autocmd BufWinEnter * silent! loadview
--- augroup END
--- ]])
 
 -- za toggles single folds. Just using zc instead
 vim.api.nvim_set_keymap('n', 'zc', 'za', { noremap = true, silent = true })
