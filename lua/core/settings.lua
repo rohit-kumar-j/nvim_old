@@ -44,9 +44,9 @@ vim.o.laststatus = 3 -- :h 'laststatus'
 -- Enable mouse mode
 vim.o.mouse = 'a'
 
-vim.o.tabstop = 4
-vim.o.softtabstop = 4
-vim.o.shiftwidth = 4
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.smartindent = true
 vim.o.autoindent = true
@@ -71,15 +71,6 @@ vim.o.updatetime = 250
 vim.o.timeout = true
 vim.o.timeoutlen = 300
 
--- This is for nvim-ufo
-vim.o.foldcolumn = '1' -- '0' is not bad
-vim.o.foldlevel = 99   -- Using ufo provider need a large value, feel free to decrease the value
-vim.o.foldlevelstart = 99
-vim.o.foldenable = true
-vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
-
--- za toggles single folds. Just using zc instead
-vim.api.nvim_set_keymap('n', 'zc', 'za', { noremap = true, silent = true })
 
 
 -- Set completeopt to have a better completion experience
@@ -96,18 +87,18 @@ vim.g.mkdp_theme = 'light'   -- markdown preview
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
-    callback = function()
-        vim.highlight.on_yank()
-    end,
-    group = highlight_group,
-    pattern = '*',
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
 })
 
 -- [[ Edit markdown tables on save with pandoc ]]
 -- Define the is_markdown function
 function is_markdown()
-    local extension = vim.fn.expand('%:e')
-    return extension == 'md' or extension == 'markdown'
+  local extension = vim.fn.expand('%:e')
+  return extension == 'md' or extension == 'markdown'
 end
 
 -- Define the BufWritePost autocommand
@@ -123,33 +114,33 @@ _G.User = {}
 User.autoformat = true
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
-    group = vim.api.nvim_create_augroup('User_Group', { clear = false }),
-    pattern = "*",
-    callback = function()
-        if User.autoformat == true then
-            if vim.o.filetype == 'help' then
-                return
-            else
-                vim.lsp.buf.format()
-                print("Formatted buffer and saved!")
-            end
-        else
-            print("Saving file... Auto format disabled!")
-            return
-        end
+  group = vim.api.nvim_create_augroup('User_Group', { clear = false }),
+  pattern = "*",
+  callback = function()
+    if User.autoformat == true then
+      if vim.o.filetype == 'help' then
+        return
+      else
+        vim.lsp.buf.format()
+        print("Formatted buffer and saved!")
+      end
+    else
+      print("Saving file... Auto format disabled!")
+      return
     end
+  end
 })
 
 function _G.toggleAutoformat()
-    if User.autoformat == true then
-        User.autoformat = not User.autoformat
-        print("Disabled format on save")
-    else
-        User.autoformat = not User.autoformat
-        print("Enabled format on save")
-    end
+  if User.autoformat == true then
+    User.autoformat = not User.autoformat
+    print("Disabled format on save")
+  else
+    User.autoformat = not User.autoformat
+    print("Enabled format on save")
+  end
 end
 
 -- Toggle Format on save
 vim.api.nvim_set_keymap('n', '<leader>F', ':lua toggleAutoformat()<CR>',
-    { noremap = true, silent = true, desc = "Toggle Format on Save" })
+  { noremap = true, silent = true, desc = "Toggle Format on Save" })
