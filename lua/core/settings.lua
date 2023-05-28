@@ -12,10 +12,10 @@ vim.api.nvim_set_keymap('n', '<C-k>', '<C-w>k', { noremap = true, silent = false
 vim.api.nvim_set_keymap('i', 'jk', '<Esc>', { noremap = true, silent = false })
 vim.api.nvim_set_keymap('i', 'kj', '<Esc>', { noremap = true, silent = false })
 
--- vim.api.nvim_set_keymap('n', '<S-Up>', '<cmd>resize +2<CR>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<S-Down>', '<cmd>resize -2<CR>', { noremap = true, silent = true })
--- vim.api.nvim_set_keymap('n', '<C-S-Left>', '<cmd>vertical resize +2<CR>', { silent = true })
--- vim.api.nvim_set_keymap('n', '<C-S-Right>', '<cmd>vertical resize -2<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<S-Up>', '<cmd>resize +2<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<S-Down>', '<cmd>resize -2<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<C-S-Left>', '<cmd>vertical resize +2<CR>', { silent = true })
+vim.api.nvim_set_keymap('n', '<C-S-Right>', '<cmd>vertical resize -2<CR>', { silent = true })
 -- Alternatively:
 
 vim.api.nvim_set_keymap('n', '<C-A-K>', '<cmd>resize +2<CR>', { noremap = true, silent = true })
@@ -96,7 +96,7 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 
 -- [[ Edit markdown tables on save with pandoc ]]
 -- Define the is_markdown function
-function is_markdown()
+local function is_markdown()
   local extension = vim.fn.expand('%:e')
   return extension == 'md' or extension == 'markdown'
 end
@@ -111,7 +111,7 @@ vim.cmd([[
 
 _G.User = {}
 
-User.autoformat = true
+User.autoformat = false
 
 vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   group = vim.api.nvim_create_augroup('User_Group', { clear = false }),
@@ -144,3 +144,7 @@ end
 -- Toggle Format on save
 vim.api.nvim_set_keymap('n', '<leader>F', ':lua toggleAutoformat()<CR>',
   { noremap = true, silent = true, desc = "Toggle Format on Save" })
+
+-- Fold close
+vim.api.nvim_set_keymap('n', ',f', ':%foldclose<CR>',
+  { noremap = true, silent = true, desc = "Fold Close" })

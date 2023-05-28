@@ -6,7 +6,7 @@ vim.api.nvim_set_var('copy_to_single_clipboard', false) -- Copy with y . Only te
 -------------------------------------------------
 -- Global LSP Servers
 vim.api.nvim_set_var('lsp_servers',
-  {
+ {
     {
       name = 'lua_ls',
       settings = {
@@ -204,7 +204,7 @@ require('core.plugin_config.indent-blankline')
 require('core.plugin_config.toggleterm')
 require('core.plugin_config.fidget')
 require('core.plugin_config.comment')
--- require('core.plugin_config.cmake-tools')
+require('core.plugin_config.cmake-tools')
 require('core.plugin_config.lspconfig')
 require('core.plugin_config.nvim-ufo')
 require('core.plugin_config.nvim-cmp')
@@ -233,9 +233,49 @@ vim.cmd([[
    autocmd!
    autocmd VimEnter * :IndentBlanklineDisable
  augroup END
-]], false)
+]])
+
+local function getFileList()
+  local cwd = vim.loop.cwd()
+  local files = {}
+  local scan = vim.loop.fs_scandir(cwd)
+
+  if scan then
+    while true do
+      local name, type = vim.loop.fs_scandir_next(scan)
+      if name == nil then
+        break
+      end
+
+      if type == 'file' then
+        table.insert(files, name)
+      end
+    end
+    -- vim.loop.fs_scandir_close(scan)
+  end
+
+  return files
+end
 
 
+vim.api.nvim_create_autocmd({ 'VimEnter' }, {
+  group = vim.api.nvim_create_augroup('Lazy Load CMake', { clear = true }),
+  pattern = "*",
+  callback = function()
+    local files_in_cwd = getFileList()
+    for _, file in ipairs(files_in_cwd) do
+      local file = vim.fn.fnamemodify(file, ':t')
+      if  file == "CMakeLists.txt" then
+        require('core.plugin_config.cmake-tools')
+      end
+    end
+  end
+})
 
+
+-- local files = getFileList()
+-- for _, file in ipairs(files) do
+--   print(vim.fn.fnamemodify(file, ':t'))
+-- end
 -- local filetype = vim.bo.filetype
 -- print(filetype)
