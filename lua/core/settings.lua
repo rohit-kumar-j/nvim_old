@@ -26,17 +26,22 @@ vim.api.nvim_set_keymap('n', '<C-A-H>', '<cmd>vertical resize -2<CR>', { noremap
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+vim.api.nvim_set_keymap('v', "J", ":m '>+1<CR>gv=gv", {noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', "K", ":m '<-2<CR>gv=gv", {noremap=true, silent=true})
+
 -- terminal mode action: revert to normal mode, i,e collapse the buffer
 vim.api.nvim_set_keymap("t", "<A-x>", [[<C-\><C-n>]], { silent = true })
 
 -- Set highlight on search
 vim.o.hlsearch = true
+vim.o.incsearch = true
 vim.o.splitright = true
 vim.o.splitbelow = true
 
 -- Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true
+vim.o.scrolloff = 8
 
 -- Global status line instead of per window
 vim.o.laststatus = 3 -- :h 'laststatus'
@@ -122,10 +127,10 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
         return
       else
         vim.lsp.buf.format()
-        print("Formatted buffer and saved!")
+        -- print("Formatted buffer and saved!")
       end
     else
-      print("Saving file... Auto format disabled!")
+      -- print("Saving file... Auto format disabled!")
       return
     end
   end
