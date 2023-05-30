@@ -26,11 +26,16 @@ vim.api.nvim_set_keymap('n', '<C-A-H>', '<cmd>vertical resize -2<CR>', { noremap
 -- [[ Setting options ]]
 -- See `:help vim.o`
 
+-- Move selected lines in visual mode
 vim.api.nvim_set_keymap('v', "J", ":m '>+1<CR>gv=gv", {noremap=true, silent=true})
 vim.api.nvim_set_keymap('v', "K", ":m '<-2<CR>gv=gv", {noremap=true, silent=true})
 
 -- terminal mode action: revert to normal mode, i,e collapse the buffer
 vim.api.nvim_set_keymap("t", "<A-x>", [[<C-\><C-n>]], { silent = true })
+
+-- copy paste problems- @ThePrimagen
+vim.api.nvim_set_keymap("x", "<leader>p", "\"_dP", {noremap=true, silent =true})
+
 
 -- Set highlight on search
 vim.o.hlsearch = true

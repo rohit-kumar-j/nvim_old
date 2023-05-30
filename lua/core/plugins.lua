@@ -71,8 +71,23 @@ require('lazy').setup({
         require("wrapping").setup()
       end
     },
-    { 'lewis6991/gitsigns.nvim', lazy = true },
-    { 'David-Kunz/markid',       lazy = true }, -- highlight same-name identifiers with the same colors
+    { 'lewis6991/gitsigns.nvim',           lazy = true },
+    { 'David-Kunz/markid',                 lazy = true }, -- highlight same-name identifiers with the same colors
+
+    --- DAP
+    { 'rcarriga/nvim-dap-ui',              lazy = true },
+    { 'mfussenegger/nvim-dap',             lazy = true },
+    { 'ldelossa/nvim-dap-projects',        lazy = true },
+    { 'theHamsta/nvim-dap-virtual-text',   lazy = true },
+    { 'nvim-telescope/telescope-dap.nvim', lazy = true },
+    {
+      'rcarriga/nvim-dap-ui',
+      lazy = true,
+      dependencies = {
+        'mfussenegger/nvim-dap',
+      },
+    },
+
     --- Themes
     {
       'projekt0n/github-nvim-theme',

@@ -6,7 +6,7 @@ vim.api.nvim_set_var('copy_to_single_clipboard', false) -- Copy with y . Only te
 -------------------------------------------------
 -- Global LSP Servers
 vim.api.nvim_set_var('lsp_servers',
- {
+  {
     {
       name = 'lua_ls',
       settings = {
@@ -208,6 +208,8 @@ require('core.plugin_config.cmake-tools')
 require('core.plugin_config.lspconfig')
 require('core.plugin_config.nvim-ufo')
 require('core.plugin_config.nvim-cmp')
+require('core.plugin_config.dap')
+require('core.plugin_config.dap-ui')
 -- require('core.plugin_config.dashboard')
 -- require('core.plugin_config.glow')
 -- require('core.plugin_config.tidy')
@@ -265,7 +267,7 @@ vim.api.nvim_create_autocmd({ 'VimEnter' }, {
     local files_in_cwd = getFileList()
     for _, file in ipairs(files_in_cwd) do
       local file = vim.fn.fnamemodify(file, ':t')
-      if  file == "CMakeLists.txt" then
+      if file == "CMakeLists.txt" then
         require('core.plugin_config.cmake-tools')
       end
     end

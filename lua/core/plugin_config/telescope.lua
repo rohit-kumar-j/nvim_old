@@ -29,7 +29,7 @@ require('telescope').setup {
     borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
     color_devicons = true,
     use_less = true,
-    set_env = { ['COLORTERM'] = 'truecolor' },     -- default = nil,
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
     normal_mode = true,
   },
   pickers = {
@@ -71,3 +71,4 @@ extensions = {
   },
 }
 require('telescope').load_extension("ui-select")
+require('telescope').load_extension('dap')

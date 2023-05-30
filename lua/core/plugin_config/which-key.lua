@@ -23,14 +23,13 @@ local mappings = {
   C     = { "<cmd>e $MYVIMRC<CR>", "Edit VIMRC" },                                               -- DONE
   [";"] = { "<cmd>Dashboard<CR>", "Dashboard" },                                                 -- DONE
   W     = { "<cmd>lua require('wrapping').toggle_wrap_mode()<CR>", "Toggle Line Wrap" },         -- DONE
-  -- h     = {
-  --     name = "Harpoon",
-  --     a = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Add file to harpoon" },
-  -- },
-  a     = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Add file to Harpoon" },
-  s     = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Toggle Harpoon Menu" },
-  n     = { "<cmd>lua require('harpoon.ui').nav_next()<CR>", "Next Harpoon mark" },
-  p     = { "<cmd>lua require('harpoon.ui').nav_prev()<CR>", "Previous Harpoon mark" },
+  h     = {
+    name = "Harpoon",
+    a    = { "<cmd>lua require('harpoon.mark').add_file()<CR>", "Add file to Harpoon" },
+    s    = { "<cmd>lua require('harpoon.ui').toggle_quick_menu()<CR>", "Toggle Harpoon Menu" },
+    n    = { "<cmd>lua require('harpoon.ui').nav_next()<CR>", "Next Harpoon mark" },
+    p    = { "<cmd>lua require('harpoon.ui').nav_prev()<CR>", "Previous Harpoon mark" },
+  },
   c     = {
     -- Symbol : CMake
     name = "CMake",
@@ -95,16 +94,26 @@ local mappings = {
     b = { "<cmd>lua require('dap').step_back()<cr>", "Step Back" },
     c = { "<cmd>lua require('dap').continue()<cr>", "Continue" },
     C = { "<cmd>lua require('dap').run_to_cursor()<cr>", "Run To Cursor" },
-    d = { "<cmd>lua require('dap').disconnect()<cr>", "Disconnect" },
+    D = { "<cmd>lua require('dap').disconnect()<cr>", "Disconnect" },
     g = { "<cmd>lua require('dap').session()<cr>", "Get Session" },
     i = { "<cmd>lua require('dap').step_into()<cr>", "Step Into" },
     o = { "<cmd>lua require('dap').step_over()<cr>", "Step Over" },
     u = { "<cmd>lua require('dap').step_out()<cr>", "Step Out" },
+    L = { "<cmd>lua require('dap').set_breakpoint(nil, nil, vim.fn.input('Log point message: '))<cr>",
+      "Log Point Message" },
     p = { "<cmd>lua require('dap').pause()<cr>", "Pause" },
     r = { "<cmd>lua require('dap').repl.toggle()<cr>", "Toggle Repl" },
+    l = { "<cmd>lua require('dap').run_last()<cr>", "Toggle Repl" },
     s = { "<cmd>lua require('dap').continue()<cr>", "Start" },
     q = { "<cmd>lua require('dap').close()<cr>", "Quit" },
     U = { "<cmd>lua require('dapui').toggle({reset = true})<cr>", "Toggle UI" },
+    -- w = {
+    --   -- Widgets
+    --   name = "Widgets",
+    --   p = { "<cmd>lua require('dap.ui.widgets').preview()<cr>", "Preview Widgets" },
+    --   f = { "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').scopes)<cr>", "Frame Widget" },
+    --   p = { "<cmd>lua require('dap.ui.widgets').centered_float(require('dap.ui.widgets').frames)<cr>", "Scope Widget" },
+    -- }
   },
   l     = {
     -- Symbol : LSP

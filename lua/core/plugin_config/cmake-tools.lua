@@ -24,14 +24,21 @@ require("cmake-tools").setup({
   },
   cmake_use_terminals = true,
   cmake_terminal_opts = {
-    split_direction = "horizontal",   -- "horizontal", "vertical"
+    split_direction = "horizontal", -- "horizontal", "vertical"
     split_size = 16,
     main_terminal_name = "My Second Little Pony CMake Terminal",
+    -- prefix_for_all_cmake_terminals = "My Little Pony Tools: ", -- This must be included and must be unique, otherwise the terminals will not work. Do not use a simple spacebar " ", or any generic name
+
+    -- Window handling
     display_single_terminal_arcoss_instance = true,
     single_terminal_pet_tab = true,
     keep_terminal_in_static_location = true,
-  }
 
+    -- Running Taaks
+    launch_task_in_a_child_process = false,
+    launch_executable_in_a_child_process = false,
+    launch_executable_from_build_directory = true -- This option is now invalid. The behaviour is to always launch from the executable's build directory
+  }
 })
 
 -- require("cmake-tools").setup({})
