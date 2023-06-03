@@ -75,18 +75,30 @@ vim.api.nvim_set_var('lsp_servers',
     {
       name = 'jsonls', -- for json formatting
     },
-    {
-      name = 'texlab', -- for latex, lsp
-    },
     -- {
-    --     name = 'ltex', -- for latex, markdown lsp
+    --   name = 'texlab', -- for latex, lsp
     -- },
+    {
+      name = 'ltex', -- for latex, markdown lsp
+      additionalRules = {
+        languageModel = '~/ngrams/',
+      },
+      filetypes = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "text", "txt" }
+    },
     {
       name = 'esbonio', -- for reStructuredText lsp
     },
     {
       name = 'lemminx', -- for xml
-    }
+    },
+    -- {
+    --   name = 'grammarly', -- for plain text
+    --   filetypes = {
+    --     "markdown",
+    --     "text",
+    --     "txt"
+    --   }
+    -- }
   }
 )
 
@@ -192,7 +204,7 @@ require('core.plugin_config.nvim-treesitter')
 require('core.plugin_config.neodev')
 require('core.plugin_config.nvim-tree')
 require('core.plugin_config.telescope')
--- require('core.plugin_config.twilight')
+require('core.plugin_config.twilight')
 require('core.plugin_config.leap')
 -- require('core.plugin_config.lazygit')
 require('core.plugin_config.gitsigns')
@@ -200,6 +212,7 @@ require('core.plugin_config.autopairs')
 require('core.plugin_config.nvim-comment')
 require('core.plugin_config.lualine')
 -- require('core.plugin_config.zen-mode')
+require('core.plugin_config.true-zen-mode')
 require('core.plugin_config.indent-blankline')
 require('core.plugin_config.toggleterm')
 require('core.plugin_config.fidget')
@@ -208,8 +221,8 @@ require('core.plugin_config.cmake-tools')
 require('core.plugin_config.lspconfig')
 require('core.plugin_config.nvim-ufo')
 require('core.plugin_config.nvim-cmp')
-require('core.plugin_config.dap')
-require('core.plugin_config.dap-ui')
+-- require('core.plugin_config.dap')
+-- require('core.plugin_config.dap-ui')
 -- require('core.plugin_config.dashboard')
 -- require('core.plugin_config.glow')
 -- require('core.plugin_config.tidy')
@@ -274,7 +287,8 @@ vim.api.nvim_create_autocmd({ 'VimEnter' }, {
   end
 })
 
-
+-- Call color scheme to fix diagnostics highlighting
+require('core.plugin_config.themes.catppuccin')
 -- local files = getFileList()
 -- for _, file in ipairs(files) do
 --   print(vim.fn.fnamemodify(file, ':t'))

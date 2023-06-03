@@ -1,23 +1,23 @@
 -- For Testing, remove the ~ sign before the `:`
 
--- FIX~: This is the default setting
--- FIXME~: This is the default setting
--- BUG~: This is the default setting
--- FIXIT~: This is the default setting
--- ISSUE~: This is the default setting
--- TODO~: This is the default setting
--- HACK~: This is the default setting
--- XXX~: This is the default setting
--- PERF~: This is the default setting
--- OPTIM~: This is the default setting
--- PERFORMANCE~: This is the default setting
--- OPTIMIZE~: This is the default setting
--- NOTE~: This is the default setting
--- INFO~: This is the default setting
--- TEST~: This is the default setting
--- TESTING~: This is the default setting
--- PASSED~: This is the default setting
--- FAILED~: This is the default setting
+-- FIX: This is the default setting
+-- FIXME: This is the default setting
+-- BUG: This is the default setting
+-- FIXIT: This is the default setting
+-- ISSUE: This is the default setting
+-- TODO: This is the default setting
+-- HACK: This is the default setting
+-- XXX: This is the default setting
+-- WARN: This is the default setting
+-- PERF: This is the default setting
+-- OPTIM: This is the default setting
+-- PERFORMANCE: This is the default setting
+-- OPTIMIZE: This is the default setting
+-- NOTE: This is the default setting
+-- INFO: This is the default setting
+-- TEST: This is the default setting
+-- PASSED: This is the default setting
+-- FAILED: This is the default setting
 
 require('todo-comments').setup(
     {
@@ -36,7 +36,9 @@ require('todo-comments').setup(
             WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
             PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
             NOTE = { icon = " ", color = "hint", alt = { "INFO" } },
-            TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
+            TEST = { icon = "⏲ ", color = "test" },
+            PASSED = { icon = "✓ ", color = "passed" },
+            FAILED = { icon = "✘", color = "failed" }
         },
         gui_style = {
             fg = "NONE",       --BOLD",-- The gui style to use for the fg highlight group.
@@ -67,7 +69,9 @@ require('todo-comments').setup(
             info = { "DiagnosticInfo", "#2563EB" },
             hint = { "DiagnosticHint", "#10B981" },
             default = { "Identifier", "#7C3AED" },
-            test = { "Identifier", "#FF00FF" }
+            test = { "Identifier", "#FF00FF" },
+            passed = { "Identifier", "#2563EB" },
+            failed = { "Identifier", "#FD0000" }
         },
         search = {
             command = "rg",

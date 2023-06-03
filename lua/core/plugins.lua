@@ -125,7 +125,8 @@ require('lazy').setup({
       dependencies =
       'nvim-lua/plenary.nvim'
     },
-    { 'folke/zen-mode.nvim',      lazy = true },
+    { 'folke/zen-mode.nvim',   lazy = true },
+    { 'Pocco81/true-zen.nvim', lazy = false },
     -- {
     --     'iamcco/markdown-preview.nvim',
     --     ft = "markdown",

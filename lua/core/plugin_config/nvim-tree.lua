@@ -6,13 +6,21 @@ vim.g.loaded_netrwPlugin = 1
 vim.opt.termguicolors = true
 
 -- empty setup using defaults
-require("nvim-tree").setup(
-    {
-        view = {
-            side = 'left',
-            width = 35,
-            preserve_window_proportions = true,
-            -- auto_resize = true,
-        }
-    }
-)
+require("nvim-tree").setup({
+  view = {
+    side = 'left',
+    width = 35,
+    preserve_window_proportions = true,
+    -- auto_resize = true,
+  },
+  diagnostics = {
+    enable = true,
+    show_on_dirs = false,
+    icons = {
+      hint = "",
+      info = "",
+      warning = "",
+      error = "",
+    },
+  },
+})
