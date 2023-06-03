@@ -10,7 +10,6 @@ if not snip_status_ok then
     return
 end
 
-
 cmp.setup({
     completion = { border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, scrollbar = "║" },
     window = {
