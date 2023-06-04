@@ -39,7 +39,7 @@ require("cmake-tools").setup({
     -- Running Taaks
     launch_task_in_a_child_process = false, -- Set this to true to make sure that you do not execute multiple cmake tasks at-a-time and keep sending data to the terminal
     launch_executable_in_a_child_process = false,
-    startinsert_in_launch_task = true,
+    startinsert_in_launch_task = false,
     startinsert_in_other_tasks = false,
     -- launch_executable_from_build_directory = true -- This option is currently invalid.
     -- We launch from build directory by default.

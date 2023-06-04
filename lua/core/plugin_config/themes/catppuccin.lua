@@ -3,7 +3,7 @@ require("catppuccin").setup({
   transparent_background = false,
   color_overrides = {
     mocha = {
-      -- base = "#000000",
+      base = "#000000",
       -- mantle = "#242424",
       -- crust = "#474747",
     },
@@ -35,4 +35,4 @@ require("catppuccin").setup({
 })
 
 -- All Float windos are black
--- vim.cmd([[autocmd! ColorScheme * highlight NormalFloat guibg=#000000]])
+vim.cmd([[autocmd! ColorScheme * highlight NormalFloat guibg=#000000]])

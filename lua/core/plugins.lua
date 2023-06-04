@@ -34,7 +34,7 @@ require('lazy').setup({
     { 'hrsh7th/cmp-path',                          lazy = true },
     { 'hrsh7th/cmp-nvim-lua',                      lazy = true },
     { 'hrsh7th/cmp-nvim-lsp',                      lazy = true },
-    { 'L3MON4D3/LuaSnip',                          lazy = true },
+    { 'L3MON4D3/LuaSnip',                          lazy = true,    build = "make install_jsregexp" },
     { 'saadparwaiz1/cmp_luasnip',                  lazy = true },
     { 'rafamadriz/friendly-snippets',              lazy = true },
     { 'rcarriga/nvim-notify',                      lazy = true },
@@ -194,6 +194,22 @@ require('lazy').setup({
       lazy = true
     },
   },
+
+  -- ChatGpt : Not tested or enabled
+  -- {
+  --   'jackMort/ChatGPT.nvim',
+  --   -- event = 'VeryLazy',
+  --   config = function()
+  --     require('core.plugin-config.chatgpt').setup({
+  --
+  --     })
+  --   end,
+  --   dependencies = {
+  --     'MunifTanjim/nui.nvim',
+  --     'nvim-lua/plenary.nvim',
+  --     'nvim-telescope/telescope.nvim'
+  --   }
+  -- },
 
   -- UI
   {

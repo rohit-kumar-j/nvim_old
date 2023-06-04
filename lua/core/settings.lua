@@ -27,14 +27,14 @@ vim.api.nvim_set_keymap('n', '<C-A-H>', '<cmd>vertical resize -2<CR>', { noremap
 -- See `:help vim.o`
 
 -- Move selected lines in visual mode
-vim.api.nvim_set_keymap('v', "J", ":m '>+1<CR>gv=gv", {noremap=true, silent=true})
-vim.api.nvim_set_keymap('v', "K", ":m '<-2<CR>gv=gv", {noremap=true, silent=true})
+vim.api.nvim_set_keymap('v', "J", ":m '>+1<CR>gv=gv", { noremap = true, silent = true })
+vim.api.nvim_set_keymap('v', "K", ":m '<-2<CR>gv=gv", { noremap = true, silent = true })
 
 -- terminal mode action: revert to normal mode, i,e collapse the buffer
 vim.api.nvim_set_keymap("t", "<A-x>", [[<C-\><C-n>]], { silent = true })
 
 -- copy paste problems- @ThePrimagen
-vim.api.nvim_set_keymap("x", "<leader>p", "\"_dP", {noremap=true, silent =true})
+vim.api.nvim_set_keymap("x", "<leader>p", "\"_dP", { noremap = true, silent = true })
 
 
 -- Set highlight on search
@@ -104,20 +104,6 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   pattern = '*',
 })
 
--- [[ Edit markdown tables on save with pandoc ]]
--- Define the is_markdown function
-local function is_markdown()
-  local extension = vim.fn.expand('%:e')
-  return extension == 'md' or extension == 'markdown'
-end
-
--- Define the BufWritePost autocommand
-vim.cmd([[
-  augroup pandoc
-    autocmd!
-    autocmd BufWritePost *.md if luaeval("is_markdown()") | silent execute '!pandoc % --lua-filter=html_details -t markdown-simple_tables -o %' | edit | endif
-  augroup END
-]])
 
 _G.User = {}
 
@@ -158,3 +144,21 @@ vim.api.nvim_set_keymap('n', '<leader>F', ':lua toggleAutoformat()<CR>',
 -- Fold close
 vim.api.nvim_set_keymap('n', ',f', ':%foldclose<CR>',
   { noremap = true, silent = true, desc = "Fold Close" })
+
+
+
+-- [[ Edit markdown tables on save with pandoc ]]
+-- Define the is_markdown function
+function User.is_markdown()
+  local extension = vim.fn.expand('%:e')
+  return extension == 'md' or extension == 'markdown'
+end
+
+-- NOTE: If this errors, remove the User namesapce and make the function local
+-- Define the BufWritePost autocommand
+vim.cmd([[
+  augroup pandoc
+    autocmd!
+    autocmd BufWritePost *.md if luaeval("User.is_markdown()") | silent execute '!pandoc % --lua-filter=html_details -t markdown-simple_tables -o %' | edit | endif
+  augroup END
+]])

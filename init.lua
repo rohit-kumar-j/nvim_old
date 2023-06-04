@@ -133,6 +133,7 @@ vim.api.nvim_set_var('lsp_formatters',
     'stylua',       -- lua
     'black',        -- python
     'clang-format', -- C++, C
+    'cmakelang',    -- CMake
     'fixjson',      --json
     'prettierd',    -- markdown
     -- No formatter for reStructuredText
@@ -229,8 +230,8 @@ require('core.plugin_config.nvim-cmp')
 -- require('core.plugin_config.tidy')
 -- require('core.plugin_config.neorg')
 -- require('core.plugin_config.notify')
-require('core.plugin_config.todo-comments')
-require('core.plugin_config.harpoon')
+-- require('core.plugin_config.todo-comments')
+-- require('core.plugin_config.harpoon')
 -- require('core.plugin_config.popui')
 
 -- Call which key last
