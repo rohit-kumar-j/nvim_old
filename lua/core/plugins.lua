@@ -138,7 +138,7 @@ require('lazy').setup({
       lazy = false,
       cmd = "Glow",
       opts = {
-        glow_path = "C:\\Users\\Rohit\\scoop\\shims\\glow.exe",
+        -- glow_path = "C:\\Users\\Rohit\\scoop\\shims\\glow.exe",
       },
     },
     -- { 'hood/popui.nvim',                     lazy = false },
