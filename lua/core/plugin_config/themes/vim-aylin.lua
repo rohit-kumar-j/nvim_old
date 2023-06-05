@@ -1,1 +1,1 @@
--- require("vim-aylin").setup({})
+require("vim-aylin").setup({})
