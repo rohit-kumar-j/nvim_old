@@ -164,7 +164,7 @@ require('lazy').setup({
     { 'glepnir/dashboard-nvim',   lazy = false },
     {
       'rohit-kumar-j/cmake-tools.nvim',
-      branch = "terminals2",
+      branch = "synced_chains",
       dependencies = {
         'nvim-tree/nvim-web-devicons',
         'nvim-lua/plenary.nvim',
