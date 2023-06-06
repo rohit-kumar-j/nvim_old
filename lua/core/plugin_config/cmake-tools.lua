@@ -1,33 +1,36 @@
 require("cmake-tools").setup({
-  cmake_command = "cmake",
+  cmake_command = "cmake",                                          -- cmake command path
+  cmake_regenerate_on_save = true,
+  cmake_generate_options = { "-DCMAKE_EXPORT_COMPILE_COMMANDS=1" }, -- it will be activated when invoke `cmake.generate`
+  cmake_build_options = {},                                         -- it will be activated when invoke `cmake.build`
   cmake_build_directory = "build",
-  cmake_build_directory_prefix = "",               -- when cmake_build_directory is "", this option will be activated
-  cmake_generate_options = { "-D", "CMAKE_EXPORT_COMPILE_COMMANDS=1" },
-  cmake_regenerate_on_save = true,                 -- Saves CMakeLists.txt file only if mofified.
-  cmake_launch_from_built_binary_directory = true, -- WIP: see #47 and #34
-  cmake_soft_link_compile_commands = true,         -- if softlink compile commands json file
-  cmake_build_options = {},
-  cmake_console_size = 10,                         -- cmake output window height
-  cmake_console_position = "belowright",           -- "belowright", "aboveleft", ...
-  cmake_show_console = "always",                   -- "always", "only_on_error"
+  cmake_build_directory_prefix = "",                                -- when cmake_build_directory is "", this option will be activated
+  cmake_soft_link_compile_commands = true,                          -- soft compile commands file to project root dir
+  cmake_compile_commands_from_lsp = false,                          -- automatically set compile commands location using lsp
+  cmake_kits_path = nil,
+
+  cmake_variants_message = {
+    short = { show = true },
+    long = { show = true, max_length = 40 }
+  },
+
   cmake_dap_configuration = {
     name = "cpp",
     type = "codelldb",
-    request = "launch", -- dap configuration, optional
+    request = "launch",
     stopOnEntry = false,
     runInTerminal = true,
-    console = "integratedTerminal"
+    console = "integratedTerminal",
   },
-  -- cmake_variants_message = {
-  --   short = { show = true },
-  --   long = { show = true, max_length = 40 }
-  -- },
+
   cmake_always_use_terminal = true, -- if true, use terminal for generate, build, clean, install, run, else only use terminal for run, use quickfix for others
+
   cmake_quickfix_opts = {
-    show = "always",                -- "always", "only_on_error"
-    position = "belowright",        -- "bottom", "top"
+    show = "always",         -- "always", "only_on_error"
+    position = "belowright", -- "bottom", "top"
     size = 10,
   },
+
   cmake_terminal_opts = {
     name = "Main Terminal",
     prefix_name = "[CMakeTools]: ", -- This must be included and must be unique, otherwise the terminals will not work. Do not use a simple spacebar " ", or any generic name
@@ -46,5 +49,7 @@ require("cmake-tools").setup({
     start_insert_in_other_tasks = false,          -- If you want to enter terminal with :startinsert upon launching all other cmake tasks in the terminal. Generally set as false
     focus_on_main_terminal = false,               -- Focus on cmake terminal when cmake task is launched. Only used if cmake_always_use_terminal is true.
     focus_on_launch_terminal = false,             -- Focus on cmake launch terminal when executable target in launched.
+    -- cmake_launch_from_built_binary_directory = true, -- WIP: see #47 and #34
   }
-})
+}
+)
