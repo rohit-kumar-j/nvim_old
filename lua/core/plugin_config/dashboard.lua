@@ -247,7 +247,7 @@ banners.halflife                  = {
   [[⠀⠀⠀⠀⠀⠀⠈⠛⠿⣿⣿⣿⣿⣿⣶⣶⣿⣿⣿⣿⣿⠿⠋⠁⠀⠀⠀⠀⠀]],
   [[⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠛⠛⠛⠛⠛⠛⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀]]
 }
-banners.robojax1                   = {
+banners.robojax1                  = {
   [[ ____                __                 _____     ______      __   __      ]],
   [[/\  _`\             /\ \               /\___ \   /\  _  \    /\ \ /\ \     ]],
   [[\ \ \L\ \     ___   \ \ \____    ___   \/__/\ \  \ \ \L\ \   \ `\`\/'/'    ]],
@@ -258,32 +258,32 @@ banners.robojax1                   = {
   [[                                                                           ]],
 
 }
-banners.robojax2 = {
-[[                                     bbbbbbbb                                                                                                        ]],
-[[RRRRRRRRRRRRRRRRR                    b::::::b                                       JJJJJJJJJJJ               AAA               XXXXXXX       XXXXXXX]],
-[[R::::::::::::::::R                   b::::::b                                       J:::::::::J              A:::A              X:::::X       X:::::X]],
-[[R::::::RRRRRR:::::R                  b::::::b                                       J:::::::::J             A:::::A             X:::::X       X:::::X]],
-[[RR:::::R     R:::::R                  b:::::b                                       JJ:::::::JJ            A:::::::A            X::::::X     X::::::X]],
-[[  R::::R     R:::::R   ooooooooooo    b:::::bbbbbbbbb       ooooooooooo               J:::::J             A:::::::::A           XXX:::::X   X:::::XXX]],
-[[  R::::R     R:::::R oo:::::::::::oo  b::::::::::::::bb   oo:::::::::::oo             J:::::J            A:::::A:::::A             X:::::X X:::::X   ]],
-[[  R::::RRRRRR:::::R o:::::::::::::::o b::::::::::::::::b o:::::::::::::::o            J:::::J           A:::::A A:::::A             X:::::X:::::X    ]],
-[[  R:::::::::::::RR  o:::::ooooo:::::o b:::::bbbbb:::::::bo:::::ooooo:::::o            J:::::j          A:::::A   A:::::A             X:::::::::X     ]],
-[[  R::::RRRRRR:::::R o::::o     o::::o b:::::b    b::::::bo::::o     o::::o            J:::::J         A:::::A     A:::::A            X:::::::::X     ]],
-[[  R::::R     R:::::Ro::::o     o::::o b:::::b     b:::::bo::::o     o::::oJJJJJJJ     J:::::J        A:::::AAAAAAAAA:::::A          X:::::X:::::X    ]],
-[[  R::::R     R:::::Ro::::o     o::::o b:::::b     b:::::bo::::o     o::::oJ:::::J     J:::::J       A:::::::::::::::::::::A        X:::::X X:::::X   ]],
-[[  R::::R     R:::::Ro::::o     o::::o b:::::b     b:::::bo::::o     o::::oJ::::::J   J::::::J      A:::::AAAAAAAAAAAAA:::::A    XXX:::::X   X:::::XXX]],
-[[RR:::::R     R:::::Ro:::::ooooo:::::o b:::::bbbbbb::::::bo:::::ooooo:::::oJ:::::::JJJ:::::::J     A:::::A             A:::::A   X::::::X     X::::::X]],
-[[R::::::R     R:::::Ro:::::::::::::::o b::::::::::::::::b o:::::::::::::::o JJ:::::::::::::JJ     A:::::A               A:::::A  X:::::X       X:::::X]],
-[[R::::::R     R:::::R oo:::::::::::oo  b:::::::::::::::b   oo:::::::::::oo    JJ:::::::::JJ      A:::::A                 A:::::A X:::::X       X:::::X]],
-[[RRRRRRRR     RRRRRRR   ooooooooooo    bbbbbbbbbbbbbbbb      ooooooooooo        JJJJJJJJJ       AAAAAAA                   AAAAAAAXXXXXXX       XXXXXXX]],
-[[                                                                                                                                                     ]]
+banners.robojax2                  = {
+  [[                                     bbbbbbbb                                                                                                        ]],
+  [[RRRRRRRRRRRRRRRRR                    b::::::b                                       JJJJJJJJJJJ               AAA               XXXXXXX       XXXXXXX]],
+  [[R::::::::::::::::R                   b::::::b                                       J:::::::::J              A:::A              X:::::X       X:::::X]],
+  [[R::::::RRRRRR:::::R                  b::::::b                                       J:::::::::J             A:::::A             X:::::X       X:::::X]],
+  [[RR:::::R     R:::::R                  b:::::b                                       JJ:::::::JJ            A:::::::A            X::::::X     X::::::X]],
+  [[  R::::R     R:::::R   ooooooooooo    b:::::bbbbbbbbb       ooooooooooo               J:::::J             A:::::::::A           XXX:::::X   X:::::XXX]],
+  [[  R::::R     R:::::R oo:::::::::::oo  b::::::::::::::bb   oo:::::::::::oo             J:::::J            A:::::A:::::A             X:::::X X:::::X   ]],
+  [[  R::::RRRRRR:::::R o:::::::::::::::o b::::::::::::::::b o:::::::::::::::o            J:::::J           A:::::A A:::::A             X:::::X:::::X    ]],
+  [[  R:::::::::::::RR  o:::::ooooo:::::o b:::::bbbbb:::::::bo:::::ooooo:::::o            J:::::j          A:::::A   A:::::A             X:::::::::X     ]],
+  [[  R::::RRRRRR:::::R o::::o     o::::o b:::::b    b::::::bo::::o     o::::o            J:::::J         A:::::A     A:::::A            X:::::::::X     ]],
+  [[  R::::R     R:::::Ro::::o     o::::o b:::::b     b:::::bo::::o     o::::oJJJJJJJ     J:::::J        A:::::AAAAAAAAA:::::A          X:::::X:::::X    ]],
+  [[  R::::R     R:::::Ro::::o     o::::o b:::::b     b:::::bo::::o     o::::oJ:::::J     J:::::J       A:::::::::::::::::::::A        X:::::X X:::::X   ]],
+  [[  R::::R     R:::::Ro::::o     o::::o b:::::b     b:::::bo::::o     o::::oJ::::::J   J::::::J      A:::::AAAAAAAAAAAAA:::::A    XXX:::::X   X:::::XXX]],
+  [[RR:::::R     R:::::Ro:::::ooooo:::::o b:::::bbbbbb::::::bo:::::ooooo:::::oJ:::::::JJJ:::::::J     A:::::A             A:::::A   X::::::X     X::::::X]],
+  [[R::::::R     R:::::Ro:::::::::::::::o b::::::::::::::::b o:::::::::::::::o JJ:::::::::::::JJ     A:::::A               A:::::A  X:::::X       X:::::X]],
+  [[R::::::R     R:::::R oo:::::::::::oo  b:::::::::::::::b   oo:::::::::::oo    JJ:::::::::JJ      A:::::A                 A:::::A X:::::X       X:::::X]],
+  [[RRRRRRRR     RRRRRRR   ooooooooooo    bbbbbbbbbbbbbbbb      ooooooooooo        JJJJJJJJJ       AAAAAAA                   AAAAAAAXXXXXXX       XXXXXXX]],
+  [[                                                                                                                                                     ]]
 }
 vim.g.dashboard_default_executive = 'telescope'
 
 local home                        = os.getenv('HOME')
 local db                          = require('dashboard')
 
-local my_banner                   = banners.shrek_logo
+local my_banner                   = banners.robojax2
 -- local my_banner                   = extras.custom_banner2
 
 if my_banner == nil then
