@@ -233,6 +233,7 @@ require('core.plugin_config.dashboard')
 -- require('core.plugin_config.todo-comments')
 -- require('core.plugin_config.harpoon')
 -- require('core.plugin_config.popui')
+require('core.plugin_config.workbench')
 
 -- Call which key last
 require('core.plugin_config.which-key')

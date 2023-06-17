@@ -101,6 +101,8 @@ return {
         Calendar          = "",
         Line              = "▊",
         Evil              = "",
+        Shrek             = "Shrek",
+        lenny             = "( ͡°o ʖ ͡°o)",
         Lambda            = "λ",
         Vim               = "",
         Debug             = "",

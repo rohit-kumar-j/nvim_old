@@ -129,7 +129,7 @@ ins_left {
   -- mode component
   function()
     -- return icons.ui.Evil
-    return icons.ui.Vim
+    return icons.ui.Evil
   end,
   color = function()
     -- auto change color according to neovims mode
