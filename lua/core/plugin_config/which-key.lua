@@ -11,6 +11,34 @@ function _G.toggle_nvimtree()
     end
 end
 
+local is_macunix = vim.fn.has('macunix')
+local is_win32 = vim.fn.has('win32')
+local is_wsl = vim.fn.has('wsl')
+local is_linux = vim.fn.has('linux')
+
+local conf_dir
+if (is_macunix == 1) then
+    conf_dir = os.getenv('HOME') .. "/.config/nvim"
+elseif
+    (is_win32 == 1) then
+    conf_dir = os.getenv('HOME') .. "/AppData/Local/nvim"
+elseif
+    (is_wsl == 1 or is_linux == 1) then
+    conf_dir = os.getenv('HOME') .. "/.config/nvim"
+end
+
+-- print("Conf dir : " .. conf_dir)
+
+function _G.searchDir() --dir_path)
+    require('telescope.builtin').find_files {
+        winblend = 5,
+        border = true,
+        cwd = conf_dir
+    }
+end
+
+vim.cmd("command! -nargs=1 SearchDir lua searchDir(<f-args>)")
+
 -- :lua require('nvim-tree.api').tree.toggle(false, true)
 
 local wk = require("which-key")
@@ -22,7 +50,7 @@ local mappings = {
     e     = { "<cmd>lua toggle_nvimtree()<CR>", "Explorer Toggle" },                               -- DONE
     r     = { "<cmd>lua require('nvim-tree.api').tree.toggle(false, true)<CR>", "Explorer Peek" }, -- DONE
     f     = { "<cmd>Telescope find_files<CR>", "Telescope Find Files" },                           -- DONE
-    C     = { "<cmd>e $MYVIMRC<CR>", "Edit VIMRC" },                                               -- DONE
+    C     = { "<cmd>lua searchDir()<CR>", "Telescope Find Config Files" },                         -- DONE
     [";"] = { "<cmd>Dashboard<CR>", "Dashboard" },                                                 -- DONE
     W     = { "<cmd>lua require('wrapping').toggle_wrap_mode()<CR>", "Toggle Line Wrap" },         -- DONE
     h     = {

@@ -13,18 +13,21 @@ local dap = require('dap')
 -- vim.keymap.set('n', '<Leader>dl', function() require('dap').run_last() end)
 vim.keymap.set({ 'n', 'v' }, '<Leader>dwh', function()
   require('dap.ui.widgets').hover()
-end)
+end, {noremap = true, silent =true, desc = "Dap.UI.Widget Hover"})
+
 vim.keymap.set({ 'n', 'v' }, '<Leader>dwp', function()
   require('dap.ui.widgets').preview()
-end)
+end, {noremap = true, silent =true, desc = "Dap.UI.Widget Preview"})
+
 vim.keymap.set('n', '<Leader>dwf', function()
   local widgets = require('dap.ui.widgets')
   widgets.centered_float(widgets.frames)
-end)
+end, {noremap = true, silent =true, desc = "Dap.UI.Widget Preview"})
+
 vim.keymap.set('n', '<Leader>dws', function()
   local widgets = require('dap.ui.widgets')
   widgets.centered_float(widgets.scopes)
-end)
+end, {noremap = true, silent =true, desc = "Dap.UI.Widget Centered Float"})
 
 print(os.getenv('HOME'))
 local home = "C:\\Users\\Rohit"
@@ -79,7 +82,6 @@ dap.configurations.cpp = {
       ignoreFailures = false
     },
     stopAtEntry = true,
-    program = 'main',
     program = function()
       return vim.fn.input('Path to executable: ', vim.fn.getcwd() .. '/', 'file')
     end,

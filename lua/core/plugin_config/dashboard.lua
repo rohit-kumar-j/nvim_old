@@ -307,7 +307,7 @@ vim.g.dashboard_default_executive = 'telescope'
 local home                        = os.getenv('HOME')
 local db                          = require('dashboard')
 
-local my_banner                   = banners.shrek_logo
+local my_banner                   = banners.neovim_lite
 -- local my_banner                   = extras.custom_banner2
 
 if my_banner == nil then
