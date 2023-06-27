@@ -23,7 +23,7 @@ require("cmake-tools").setup({
     console = "integratedTerminal",
   },
 
-  cmake_always_use_terminal = true, -- if true, use terminal for generate, build, clean, install, run, else only use terminal for run, use quickfix for others
+  cmake_always_use_terminal = false, -- if true, use terminal for generate, build, clean, install, run, else only use terminal for run, use quickfix for others
 
   cmake_quickfix_opts = {
     show = "always",         -- "always", "only_on_error"
@@ -50,6 +50,7 @@ require("cmake-tools").setup({
     focus_on_main_terminal = false,               -- Focus on cmake terminal when cmake task is launched. Only used if cmake_always_use_terminal is true.
     focus_on_launch_terminal = false,             -- Focus on cmake launch terminal when executable target in launched.
     -- cmake_launch_from_built_binary_directory = true, -- WIP: see #47 and #34
+    set_terminal_filetype = true,
   }
 }
 )

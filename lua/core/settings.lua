@@ -46,7 +46,7 @@ vim.o.splitbelow = true
 -- Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true
-vim.o.scrolloff = 8
+vim.o.scrolloff = 2
 
 -- Global status line instead of per window
 vim.o.laststatus = 3 -- :h 'laststatus'

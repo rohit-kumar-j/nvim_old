@@ -31,7 +31,6 @@ end
 
 function _G.searchDir() --dir_path)
     require('telescope.builtin').find_files {
-        winblend = 5,
         border = true,
         cwd = conf_dir
     }

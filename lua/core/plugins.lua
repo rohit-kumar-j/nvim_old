@@ -19,8 +19,14 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup({
         -- LSP Support
-        { 'neovim/nvim-lspconfig',    lazy = false },              -- Required
+        { 'neovim/nvim-lspconfig',    lazy = false }, -- Required
         { 'weizheheng/nvim-workbench' },
+        {
+            "m4xshen/hardtime.nvim",
+            event = "VeryLazy",
+            opts = { disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason", "terminal", "dashboard" },
+            }
+        },
         {
             'williamboman/mason.nvim',
             build = function()
@@ -101,9 +107,14 @@ require('lazy').setup({
             --     },
             -- },
         },
-        { 'rose-pine/neovim',                 lazy = true, name = 'rose-pine' },
-        { 'rebelot/kanagawa.nvim',            lazy = true, name = 'kanagawa' },
-        { 'catppuccin/nvim',                  lazy = true, name = 'catppuccin' },
+        { 'rose-pine/neovim',      lazy = true, name = 'rose-pine' },
+        { 'rebelot/kanagawa.nvim', lazy = true, name = 'kanagawa' },
+        {
+            'catppuccin/nvim',
+            lazy = "VeryLazy",
+            name = 'catppuccin',
+            config = function() require('core.plugin_config.themes.catppuccin') end
+        },
         { 'folke/tokyonight.nvim',            lazy = true },
         { 'loctvl842/monokai-pro.nvim',       lazy = true },
         { 'AhmedAbdulrahman/vim-aylin',       lazy = true }, --         name = 'vim-aylin' ,lazy=false},
@@ -161,7 +172,7 @@ require('lazy').setup({
         { 'mcauley-penney/tidy.nvim', lazy = true },
         { 'terrortylor/nvim-comment', lazy = true },
         { 'akinsho/toggleterm.nvim',  lazy = true },
-        { 'j-hui/fidget.nvim',        lazy = true,  tag = 'legacy' },
+        { 'j-hui/fidget.nvim',        lazy = true, tag = 'legacy' },
         { 'glepnir/dashboard-nvim',   lazy = false },
         {
             'rohit-kumar-j/cmake-tools.nvim',
@@ -180,9 +191,9 @@ require('lazy').setup({
             build = ":Neorg sync-parsers",
             opts = {
                 load = {
-                    ["core.defaults"] = {}, -- Loads default behaviour
+                    ["core.defaults"] = {},  -- Loads default behaviour
                     ["core.concealer"] = {}, -- Adds pretty icons to your documents
-                    ["core.dirman"] = { -- Manages Neorg workspaces
+                    ["core.dirman"] = {      -- Manages Neorg workspaces
                         config = {
                             workspaces = {
                                 notes = "~/notes",
