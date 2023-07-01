@@ -6,155 +6,156 @@ vim.api.nvim_set_var('copy_to_single_clipboard', false) -- Copy with y . Only te
 -------------------------------------------------
 -- Global LSP Servers
 vim.api.nvim_set_var('lsp_servers',
-  {
     {
-      name = 'lua_ls',
-      settings = {
-        Lua = {
-          diagnostics = {
-            globals = {
-              'vim',
-              'require'
+        {
+            name = 'lua_ls',
+            settings = {
+                Lua = {
+                    diagnostics = {
+                        globals = {
+                            'vim',
+                            'require'
+                        },
+                    },
+                    workspace = {
+                        -- Make the server aware of Neovim runtime files
+                        library = '"${3rd}/luv/library"',
+                        checkThirdParty = false,
+                    },
+                    -- Do not send telemetry data containing a randomized but unique identifier
+                    telemetry = {
+                        enable = false,
+                    },
+                    completion = {
+                        callSnippet = "Replace"
+                    },
+                },
             },
-          },
-          workspace = {
-            -- Make the server aware of Neovim runtime files
-            library = '"${3rd}/luv/library"',
-            checkThirdParty = false,
-          },
-          -- Do not send telemetry data containing a randomized but unique identifier
-          telemetry = {
-            enable = false,
-          },
-          completion = {
-            callSnippet = "Replace"
-          },
         },
-      },
-    },
-    {
-      name          = 'cmake',
-      settings      = {
-        CMake = {
-          filetypes = { 'cmake', 'CMakeLists.txt', 'CMakeCache.txt' },
+        {
+            name          = 'cmake',
+            settings      = {
+                CMake = {
+                    filetypes = { 'cmake', 'CMakeLists.txt', 'CMakeCache.txt' },
+                },
+            },
+            on_new_config = function(new_config, new_cwd)
+                local status, cmake = pcall(require, "cmake-tools")
+                if status then
+                    cmake.clangd_on_new_config(new_config)
+                end
+            end,
         },
-      },
-      on_new_config = function(new_config, new_cwd)
-        local status, cmake = pcall(require, "cmake-tools")
-        if status then
-          cmake.clangd_on_new_config(new_config)
-        end
-      end,
-    },
-    {
-      name = 'clangd',
-      -- cmd = {
-      --     "clangd",
-      -- },
-      root_dir = function(fname)
-        return lspconfig.util.find_git_ancestor(fname)
-      end,
-      settings = {
-        clangd = {
-          extraArgs = {
-            -- "-ID:\\VS2022\\Koala\\external",
-          }
-          --      excludeArgs = { '-stdlib=libc++' }
+        {
+            name = 'clangd',
+            -- cmd = {
+            --     "clangd",
+            -- },
+            root_dir = function(fname)
+                return lspconfig.util.find_git_ancestor(fname)
+            end,
+            settings = {
+                clangd = {
+                    extraArgs = {
+                        -- "-ID:\\VS2022\\Koala\\external",
+                    }
+                    --      excludeArgs = { '-stdlib=libc++' }
+                },
+            },
+            on_new_config = function(new_config, new_cwd)
+                local status, cmake = pcall(require, "cmake-tools")
+                if status then
+                    cmake.clangd_on_new_config(new_config)
+                end
+            end,
         },
-      },
-      on_new_config = function(new_config, new_cwd)
-        local status, cmake = pcall(require, "cmake-tools")
-        if status then
-          cmake.clangd_on_new_config(new_config)
-        end
-      end,
-    },
-    {
-      name = 'pyright',
-    },
-    {
-      name = 'jsonls', -- for json formatting
-    },
-    -- {
-    --   name = 'texlab', -- for latex, lsp
-    -- },
-    {
-      name = 'ltex', -- for latex, markdown lsp
-      additionalRules = {
-        languageModel = '~/ngrams/',
-      },
-      filetypes = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "text", "txt" }
-    },
-    {
-      name = 'esbonio', -- for reStructuredText lsp
-    },
-    {
-      name = 'lemminx', -- for xml
-    },
-    -- {
-    --   name = 'grammarly', -- for plain text
-    --   filetypes = {
-    --     "markdown",
-    --     "text",
-    --     "txt"
-    --   }
-    -- }
-  }
+        {
+            name = 'pyright',
+        },
+        {
+            name = 'jsonls', -- for json formatting
+        },
+        -- {
+        --   name = 'texlab', -- for latex, lsp
+        -- },
+        {
+            name = 'ltex', -- for latex, markdown lsp
+            additionalRules = {
+                languageModel = '~/ngrams/',
+            },
+            filetypes = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "text",
+                "txt" }
+        },
+        {
+            name = 'esbonio', -- for reStructuredText lsp
+        },
+        {
+            name = 'lemminx', -- for xml
+        },
+        -- {
+        --   name = 'grammarly', -- for plain text
+        --   filetypes = {
+        --     "markdown",
+        --     "text",
+        --     "txt"
+        --   }
+        -- }
+    }
 )
 
 -- Global LSP Linters
 vim.api.nvim_set_var('lsp_linters',
-  {
-    'luacheck', -- lua
-    'flake8',   -- python
-    'cpplint',  -- C++
-    'jsonlint', -- json
-    'textlint', -- markdown
-    -- No linters for xml
-  }
+    {
+        'luacheck', -- lua
+        'flake8',   -- python
+        'cpplint',  -- C++
+        'jsonlint', -- json
+        'textlint', -- markdown
+        -- No linters for xml
+    }
 )
 
 -- Global LSP DAP
 vim.api.nvim_set_var('lsp_dap',
-  {
-    'debugpy',  -- python
-    'codelldb', -- C++
-    'cpptools', -- C++
-    -- No dap for json
-    -- No dap for markdown
-    -- No dap for reStructuredText
-    -- No dap for xml
-  }
+    {
+        'debugpy',  -- python
+        'codelldb', -- C++
+        'cpptools', -- C++
+        -- No dap for json
+        -- No dap for markdown
+        -- No dap for reStructuredText
+        -- No dap for xml
+    }
 )
 
 -- Global LSP Formatters
 vim.api.nvim_set_var('lsp_formatters',
-  {
-    'stylua',       -- lua
-    'black',        -- python
-    'clang-format', -- C++, C
-    'cmakelang',    -- CMake
-    'fixjson',      --json
-    'prettierd',    -- markdown
-    -- No formatter for reStructuredText
-    'xmlformatter'  -- xml
-  }
+    {
+        'stylua',       -- lua
+        'black',        -- python
+        'clang-format', -- C++, C
+        'cmakelang',    -- CMake
+        'fixjson',      --json
+        'prettierd',    -- markdown
+        -- No formatter for reStructuredText
+        'xmlformatter'  -- xml
+    }
 )
 
 -------------------------------------------------
 -- Global Treesitter Servers
 vim.api.nvim_set_var('treesitter_servers',
-  {
-    'lua',
-    'c',
-    'cpp',
-    'cmake',
-    'norg',
-    'latex',
-    'bibtex',
-    -- No treesitter server for xml
-    'vim', -- This solves syntax highlighting in {.lua} files
-  }
+    {
+        'lua',
+        'c',
+        'cpp',
+        'cmake',
+        'norg',
+        'latex',
+        'bibtex',
+        -- No treesitter server for xml
+        'vim', -- This solves syntax highlighting in {.lua} files
+    }
 )
 
 -------------------------------------------------
@@ -233,7 +234,8 @@ require('core.plugin_config.markid')
 -- vim.cmd.colorscheme('github_dark_default')
 -- vim.cmd.colorscheme('nord')
 -- vim.cmd.colorscheme('carbonfox')
-vim.cmd.colorscheme('catppuccin-mocha')
+-- vim.cmd.colorscheme('catppuccin-mocha')
+vim.cmd.colorscheme('ayu')
 -- vim.cmd.colorscheme('tokyonight')
 -- vim.cmd.colorscheme('kanagawa')
 -- vim.cmd.colorscheme('aylin')
@@ -256,40 +258,39 @@ vim.cmd([[
 ]])
 
 local function getFileList()
-  local cwd = vim.loop.cwd()
-  local files = {}
-  local scan = vim.loop.fs_scandir(cwd)
+    local cwd = vim.loop.cwd()
+    local files = {}
+    local scan = vim.loop.fs_scandir(cwd)
 
-  if scan then
-    while true do
-      local name, type = vim.loop.fs_scandir_next(scan)
-      if name == nil then
-        break
-      end
-
-      if type == 'file' then
-        table.insert(files, name)
-      end
+    if scan then
+        while true do
+            local name, type = vim.loop.fs_scandir_next(scan)
+            if name == nil then
+                break
+            end
+            if type == 'file' then
+                table.insert(files, name)
+            end
+        end
+        -- vim.loop.fs_scandir_close(scan)
     end
-    -- vim.loop.fs_scandir_close(scan)
-  end
 
-  return files
+    return files
 end
 
 
 vim.api.nvim_create_autocmd({ 'VimEnter' }, {
-  group = vim.api.nvim_create_augroup('Lazy Load CMake', { clear = true }),
-  pattern = "*",
-  callback = function()
-    local files_in_cwd = getFileList()
-    for _, file in ipairs(files_in_cwd) do
-      file = vim.fn.fnamemodify(file, ':t')
-      if file == "CMakeLists.txt" then
-        require('core.plugin_config.cmake-tools')
-      end
+    group = vim.api.nvim_create_augroup('Lazy Load CMake', { clear = true }),
+    pattern = "*",
+    callback = function()
+        local files_in_cwd = getFileList()
+        for _, file in ipairs(files_in_cwd) do
+            file = vim.fn.fnamemodify(file, ':t')
+            if file == "CMakeLists.txt" then
+                require('core.plugin_config.cmake-tools')
+            end
+        end
     end
-  end
 })
 
 -- Call color scheme to fix diagnostics highlighting

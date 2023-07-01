@@ -23,6 +23,7 @@ require('lazy').setup({
         { 'weizheheng/nvim-workbench' },
         {
             "m4xshen/hardtime.nvim",
+            enabled = false,
             event = "VeryLazy",
             opts = { disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason", "terminal", "dashboard" },
             }
@@ -88,6 +89,26 @@ require('lazy').setup({
         { 'theHamsta/nvim-dap-virtual-text',   lazy = true },
         { 'nvim-telescope/telescope-dap.nvim', lazy = true },
         {
+            'madskjeldgaard/cppman.nvim',
+            dependencies = {
+                { 'MunifTanjim/nui.nvim' }
+            },
+            config = function()
+                local cppman = require "cppman"
+                cppman.setup()
+
+                -- Make a keymap to open the word under cursor in CPPman
+                vim.keymap.set("n", "<leader>cm", function()
+                    cppman.open_cppman_for(vim.fn.expand("<cword>"))
+                end)
+
+                -- Open search box
+                vim.keymap.set("n", "<leader>cc", function()
+                    cppman.input()
+                end)
+            end
+        },
+        {
             'rcarriga/nvim-dap-ui',
             lazy = true,
             dependencies = {
@@ -107,28 +128,33 @@ require('lazy').setup({
             --     },
             -- },
         },
-        { 'rose-pine/neovim',      lazy = true, name = 'rose-pine' },
-        { 'rebelot/kanagawa.nvim', lazy = true, name = 'kanagawa' },
+        { 'rose-pine/neovim',      name = 'rose-pine' },
+        { 'rebelot/kanagawa.nvim', name = 'kanagawa' },
+        {
+            'Shatur/neovim-ayu',
+            priority = 1000,
+            config = function() require('core.plugin_config.themes.ayu') end
+        },
         {
             'catppuccin/nvim',
-            lazy = "VeryLazy",
+            priority = 1000,
             name = 'catppuccin',
             config = function() require('core.plugin_config.themes.catppuccin') end
         },
-        { 'folke/tokyonight.nvim',            lazy = true },
-        { 'loctvl842/monokai-pro.nvim',       lazy = true },
-        { 'AhmedAbdulrahman/vim-aylin',       lazy = true }, --         name = 'vim-aylin' ,lazy=false},
-        { 'mcchrish/zenbones.nvim',           lazy = true, dependencies = 'rktjmp/lush.nvim' },
-        { 'uloco/bluloco.nvim',               lazy = true, dependencies = 'rktjmp/lush.nvim' },
-        { 'tanvirtin/monokai.nvim',           lazy = true },
-        { 'kaiuri/nvim-juliana',              lazy = true },
-        { 'EdenEast/nightfox.nvim',           lazy = true },
-        { 'shaunsingh/nord.nvim',             lazy = true },
-        { 'navarasu/onedark.nvim',            lazy = true },
-        { 'nyoom-engineering/oxocarbon.nvim', lazy = true },
-        { 'tiagovla/tokyodark.nvim',          lazy = true },
-        { 'olimorris/onedarkpro.nvim',        lazy = true },
-        { 'bluz71/vim-moonfly-colors',        lazy = true },
+        { 'folke/tokyonight.nvim', },
+        { 'loctvl842/monokai-pro.nvim', },
+        { 'AhmedAbdulrahman/vim-aylin', }, --         name = 'vim-aylin' ,lazy=false},
+        { 'mcchrish/zenbones.nvim',           dependencies = 'rktjmp/lush.nvim' },
+        { 'uloco/bluloco.nvim',               dependencies = 'rktjmp/lush.nvim' },
+        { 'tanvirtin/monokai.nvim', },
+        { 'kaiuri/nvim-juliana', },
+        { 'EdenEast/nightfox.nvim', },
+        { 'shaunsingh/nord.nvim', },
+        { 'navarasu/onedark.nvim', },
+        { 'nyoom-engineering/oxocarbon.nvim', },
+        { 'tiagovla/tokyodark.nvim', },
+        { 'olimorris/onedarkpro.nvim', },
+        { 'bluz71/vim-moonfly-colors', },
         --
         { 'folke/twilight.nvim',              lazy = true },
         {

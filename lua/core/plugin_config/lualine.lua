@@ -70,6 +70,7 @@ local config = {
     section_separators = "",
     disabled_filetypes = { "alpha", "dashboard", "Outline" },
     always_divide_middle = true,
+    -- theme = 'ayu',
     theme = {
       -- We are going to use lualine_c an lualine_x as left and
       -- right section. Both are highlighted by c theme .  So we

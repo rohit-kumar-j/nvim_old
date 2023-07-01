@@ -67,6 +67,7 @@ local mappings = {
         r = { "<cmd>CMakeRun<cr>", "CMake Run" },
         d = { "<cmd>CMakeDebug<cr>", "CMake Debug" },
         O = { "<cmd>CMakeOpen<cr>", "CMake Open Console" },
+        m = { "<cmd>CPPMan<cr>", "Cpp Manual Pages" },
         C = { "<cmd>CMakeClose<cr>", "CMake Close Console" },
         l = { "<cmd>CMakeSelectLaunchTarget<cr>", "Select Launch Target" },
         i = { "<cmd>CMakeInstall<cr>", "CMake Install" },
