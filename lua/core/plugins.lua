@@ -22,10 +22,24 @@ require('lazy').setup({
         { 'neovim/nvim-lspconfig',    lazy = false }, -- Required
         { 'weizheheng/nvim-workbench' },
         {
+            'rmagatti/goto-preview',
+            config = function()
+                require('core.plugin_config.goto_preview')
+            end
+        },
+        {
+            'b0o/incline.nvim',
+            config = function()
+                require('core.plugin_config.incline')
+            end
+        },
+        {
             "m4xshen/hardtime.nvim",
             enabled = false,
             event = "VeryLazy",
-            opts = { disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason", "terminal", "dashboard" },
+            opts = {
+                disabled_filetypes = { "qf", "netrw", "NvimTree", "lazy", "mason", "cmake_tools_terminal", "terminal",
+                    "dashboard", "dapui_stacks", "dapui_console", "dapui-repl", "dapui_watches", "dapui_breakpoints" },
             }
         },
         {
@@ -34,6 +48,8 @@ require('lazy').setup({
                 pcall(vim.cmd, 'MasonUpdate')
             end,
         },
+        { 'lervag/vimtex' },
+        { 'emakman/neovim-latex-previewer' },
         { 'williamboman/mason-lspconfig.nvim',         lazy = true }, -- For installing language servers
         { 'WhoIsSethDaniel/mason-tool-installer.nvim', lazy = true }, -- For installing dap, linters, formatters, etc.
         -- Autocompletion
@@ -89,6 +105,13 @@ require('lazy').setup({
         { 'theHamsta/nvim-dap-virtual-text',   lazy = true },
         { 'nvim-telescope/telescope-dap.nvim', lazy = true },
         {
+            'rcarriga/nvim-dap-ui',
+            lazy = true,
+            dependencies = {
+                'mfussenegger/nvim-dap',
+            },
+        },
+        {
             'madskjeldgaard/cppman.nvim',
             dependencies = {
                 { 'MunifTanjim/nui.nvim' }
@@ -108,19 +131,16 @@ require('lazy').setup({
                 end)
             end
         },
-        {
-            'rcarriga/nvim-dap-ui',
-            lazy = true,
-            dependencies = {
-                'mfussenegger/nvim-dap',
-            },
-        },
 
         --- Themes
         {
             'projekt0n/github-nvim-theme',
-            tag = 'v0.0.7',
-            lazy = true,
+            -- tag = 'v0.0.7',
+            lazy = false,    -- make sure we load this during startup if it is your main colorscheme
+            priority = 1000, -- make sure to load this before all the other start plugins
+            config = function()
+                require('core.plugin_config.themes.github_theme')
+            end
             -- opts = {},
             -- opts = {
             --     experiments = {
@@ -132,6 +152,7 @@ require('lazy').setup({
         { 'rebelot/kanagawa.nvim', name = 'kanagawa' },
         {
             'Shatur/neovim-ayu',
+            lazy = false,
             priority = 1000,
             config = function() require('core.plugin_config.themes.ayu') end
         },
