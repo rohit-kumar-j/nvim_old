@@ -184,8 +184,14 @@ require('lazy').setup({
             dependencies =
             'nvim-lua/plenary.nvim'
         },
-        { 'folke/zen-mode.nvim',   lazy = true },
-        { 'Pocco81/true-zen.nvim', lazy = false },
+        {
+            'folke/zen-mode.nvim',
+            lazy = false,
+            config = function()
+                require('core.plugin_config.zen-mode')
+            end
+        },
+        { 'Pocco81/true-zen.nvim',    lazy = false },
         -- {
         --     'iamcco/markdown-preview.nvim',
         --     ft = "markdown",
@@ -252,6 +258,23 @@ require('lazy').setup({
             dependencies = { { "nvim-lua/plenary.nvim" } },
             lazy = true
         },
+        -- lazy.nvim
+        {
+            "folke/noice.nvim",
+            event = "VeryLazy",
+            enabled = false,
+            opts = {
+                -- add any options here
+            },
+            dependencies = {
+                -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+                "MunifTanjim/nui.nvim",
+                -- OPTIONAL:
+                --   `nvim-notify` is only needed, if you want to use the notification view.
+                --   If not available, we use `mini` as the fallback
+                "rcarriga/nvim-notify",
+            }
+        }
     },
 
     -- ChatGpt : Not tested or enabled
