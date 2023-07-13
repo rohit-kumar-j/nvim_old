@@ -57,8 +57,14 @@ return {
     },
     git = {
         Add = " ",
+        Add2 = ' ',
+
         Mod = " ",
+        Mod2 = ' ',
+
         Remove = " ",
+        Remove2 = ' ',
+
         Untrack = " ",
         Rename = " ",
         Diff = " ",
@@ -74,9 +80,12 @@ return {
         BigCircle         = "",
         BigUnfilledCircle = "",
         CircleWithGap     = "",
+        CircleIcon        = "󰀘",
         LogPoint          = "",
         Close             = "",
         NewFile           = "",
+        deb               = "",
+        lock              = "󰌾",
         Search            = "",
         Lightbulb         = "",
         Project           = "",
@@ -102,7 +111,7 @@ return {
         Line              = "▊",
         Evil              = "",
         Shrek             = "Shrek",
-        lenny             = "( ͡°o ʖ ͡°o)",
+        lenny             = "(°oʖ°o)",
         Lambda            = "λ",
         Vim               = "",
         Debug             = "",
