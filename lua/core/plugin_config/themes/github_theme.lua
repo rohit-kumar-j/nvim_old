@@ -1,5 +1,5 @@
 require('github-theme').setup({
-    transparent = true,
+    -- options = { transparent = true }
     -- opt = {
     --     experiments = {
     --         new_palettes = false,

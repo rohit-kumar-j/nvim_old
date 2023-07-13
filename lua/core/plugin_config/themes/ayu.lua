@@ -17,6 +17,7 @@ require('ayu').setup({
 
     overrides = {
         Normal = { bg = "None" },
+        NormalFloat = { bg = "None" },
         ColorColumn = { bg = "None" },
         SignColumn = { bg = "None" },
         Folded = {
