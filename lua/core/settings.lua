@@ -46,7 +46,7 @@ vim.o.splitbelow = true
 -- Make line numbers default
 vim.wo.number = true
 vim.wo.relativenumber = true
-vim.o.scrolloff = 2
+vim.o.scrolloff = 0
 
 -- Global status line instead of per window
 vim.o.laststatus = 3 -- :h 'laststatus'
@@ -68,6 +68,8 @@ vim.g.did_load_filetypes = 0
 
 -- Save undo history
 vim.o.undofile = true
+vim.o.list = true
+vim.o.listchars = "tab:> ,trail:-,nbsp:+"
 
 -- Case insensitive searching UNLESS /C or capital in search
 vim.o.ignorecase = true
