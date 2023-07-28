@@ -70,7 +70,43 @@ vim.api.nvim_set_var('lsp_servers',
             end,
         },
         {
+            name = 'jedi_language_server',
+        },
+        {
+            name = 'pylsp',
+        },
+        {
             name = 'pyright',
+            settings = {
+                enable = true,
+                -- trace = { server = "verbose" },
+                -- commandPath = "",
+                -- configurationSources = { "pycodestyle" },
+                -- plugins = {
+                --     jedi_completion = { enabled = true },
+                --     jedi_hover = { enabled = true },
+                --     jedi_references = { enabled = true },
+                --     jedi_signature_help = { enabled = true },
+                --     jedi_symbols = {
+                --         enabled = true,
+                --         all_scopes = true
+                --     },
+                --     mccabe = {
+                --         enabled = true,
+                --         threshold = 15
+                --     },
+                --     preload = { enabled = true },
+                --     pycodestyle = { enabled = true },
+                --     pydocstyle = {
+                --         enabled = false,
+                --         match = "(?!test_).*\\.py",
+                --         matchDir = "[^\\.].*"
+                --     },
+                --     pyflakes = { enabled = true },
+                --     rope_completion = { enabled = true },
+                --     yapf = { enabled = true }
+                -- }
+            }
         },
         {
             name = 'jsonls', -- for json formatting
@@ -78,14 +114,14 @@ vim.api.nvim_set_var('lsp_servers',
         -- {
         --   name = 'texlab', -- for latex, lsp
         -- },
-        --[[ {
+        {
             name = 'ltex', -- for latex, markdown lsp
             additionalRules = {
                 languageModel = '~/ngrams/',
             },
             filetypes = { "bib", "gitcommit", "markdown", "org", "plaintex", "rst", "rnoweb", "tex", "pandoc", "text",
                 "txt" }
-        }, ]]
+        },
         {
             name = 'esbonio', -- for reStructuredText lsp
         },
