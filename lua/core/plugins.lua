@@ -76,6 +76,18 @@ require('lazy').setup({
                 'voldikss/vim-floaterm',
             }
         },
+        -- Lua
+        {
+            "ahmedkhalf/jupyter-nvim",
+            build = ":UpdateRemotePlugins",
+            config = function()
+                require("jupyter-nvim").setup {
+                    -- your configuration comes here
+                    -- or leave it empty to use the default settings
+                    -- refer to the configuration section below
+                }
+            end
+        },
         {
             'folke/which-key.nvim',
             tag = 'v1.2.2',
@@ -95,8 +107,11 @@ require('lazy').setup({
                 require("wrapping").setup()
             end
         },
-        { 'lewis6991/gitsigns.nvim',           lazy = true },
-        { 'David-Kunz/markid',                 lazy = true }, -- highlight same-name identifiers with the same colors
+        { 'lewis6991/gitsigns.nvim', lazy = true },
+        { 'David-Kunz/markid',       lazy = true }, -- highlight same-name identifiers with the same colors
+        {
+            'mzlogin/vim-markdown-toc',
+        },
 
         --- DAP
         { 'rcarriga/nvim-dap-ui',              lazy = true },
@@ -258,6 +273,7 @@ require('lazy').setup({
             dependencies = { { "nvim-lua/plenary.nvim" } },
             lazy = true
         },
+        { 'vigoux/ltex-ls.nvim', dependencies = 'neovim/nvim-lspconfig' },
         -- lazy.nvim
         {
             "folke/noice.nvim",
