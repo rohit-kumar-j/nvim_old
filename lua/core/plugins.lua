@@ -206,7 +206,7 @@ require('lazy').setup({
                 require('core.plugin_config.zen-mode')
             end
         },
-        { 'Pocco81/true-zen.nvim',    lazy = false },
+        { 'Pocco81/true-zen.nvim', lazy = false },
         -- {
         --     'iamcco/markdown-preview.nvim',
         --     ft = "markdown",
@@ -236,8 +236,14 @@ require('lazy').setup({
             --     vim.o.foldenable = true
             -- end,
         },
-        { 'ThePrimeagen/harpoon',     lazy = true },
-        { 'mcauley-penney/tidy.nvim', lazy = true },
+        { 'ThePrimeagen/harpoon',  lazy = true },
+        {
+            'mcauley-penney/tidy.nvim',
+            lazy = true,
+            config = function()
+                require('core.plugin_config.tidy')
+            end
+        },
         { 'terrortylor/nvim-comment', lazy = true },
         { 'akinsho/toggleterm.nvim',  lazy = true },
         { 'j-hui/fidget.nvim',        lazy = true, tag = 'legacy' },
