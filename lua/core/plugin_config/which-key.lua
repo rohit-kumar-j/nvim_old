@@ -21,7 +21,7 @@ if (is_macunix == 1) then
     conf_dir = os.getenv('HOME') .. "/.config/nvim"
 elseif
     (is_win32 == 1) then
-    conf_dir = os.getenv('HOME') .. "/AppData/Local/nvim"
+    conf_dir = os.getenv('USERPROFILE') .. "/AppData/Local/nvim" -- IN windows, it is called "USERPROFILE"
 elseif
     (is_wsl == 1 or is_linux == 1) then
     conf_dir = os.getenv('HOME') .. "/.config/nvim"
