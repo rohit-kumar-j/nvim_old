@@ -1,6 +1,7 @@
 # My Nvim Config
 
-Readme is under ...construction
+<img src="./docs/images/nvim_start.PNG" width="1200px"/>
+
 
 ## OS
  - [x] Win
